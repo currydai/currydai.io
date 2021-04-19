@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>【机器学习】[3]从手写字母认识神经网络 | Currydai</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://currydai.com/favicon.ico?v=1618845862048">
+<link rel="stylesheet" href="https://currydai.com/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="1.书籍阅读：《神经网络与深度学习》
+神经⽹络：⼀种美妙的受⽣物学启发的编程范式，可以让计算机从观测数据中进⾏学习
+深度学习：⼀个强有⼒的⽤于神经⽹络学习的众多技术的集合（2006~）
+在图像识别、语音识别以及自然语言处理领域最好的解决方案..." />
+    <meta name="keywords" content="Machine" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://currydai.com">
+        <img src="https://currydai.com/images/avatar.png?v=1618845862048" class="site-logo">
+        <h1 class="site-title">Currydai</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            Home
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            Table of Contents
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            Classification label
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            About me
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="http://currydai@github.com/" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://twitter.com/daihb30" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://weibo.com/u/5951669823" target="_blank">
+            <i class="fab fa-weibo"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://www.zhihu.com/people/ka-li-35-76" target="_blank">
+            <i class="fab fa-zhihu"></i>
+          </a>
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Share interesting things
+    </div>
+    <div class="site-footer">
+      Powered by <a href="http://currydai@github.com/" target="_blank">Currydai</a> | <a class="rss" href="https://currydai.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">【机器学习】[3]从手写字母认识神经网络</h2>
+            <div class="post-date">2021-02-03</div>
+            
+            <div class="post-content" v-pre>
+              <h2 id="1书籍阅读神经网络与深度学习">1.书籍阅读：《神经网络与深度学习》</h2>
+<p>神经⽹络：⼀种美妙的受⽣物学启发的编程范式，可以让计算机从观测数据中进⾏学习<br>
+深度学习：⼀个强有⼒的⽤于神经⽹络学习的众多技术的集合（2006~）<br>
+在图像识别、语音识别以及自然语言处理领域最好的解决方案</p>
+<h3 id="11-从手写识别字体认识神经网络">1.1 从手写识别字体认识神经网络</h3>
+<p>⼿写识别常常被当成学习神经⽹络的原型问题<br>
+MNIST数据集：60000幅训练图像以及10000幅测试数据  28*28灰度值</p>
+<p>感知器：依据权重和阈值来做出决定的的单元<br>
+S神经元：全新的人工神经元<br>
+两者区别：后者在前者基础上加一个simgod函数，平滑化</p>
+<p>前馈神经网络：上一层的输出作为下一层的输入，信息总是向前传播，从不反向回馈<br>
+递归神经网络：单个神经元存在反馈回路</p>
+<p>二次代价函数=均方误差=MSE<br>
+训练的目的：找到能最小化二次代价函数的权重和偏置-&gt;微积分or暗推法<br>
+梯度下降算法：重复计算梯度 ∇C，然后沿着相反的⽅向移动，沿着⼭⾕滚落<br>
+这是⼀种⾮常有效的⽅式去求代价函数的最⼩值，进⽽促进⽹络⾃⾝的学习。<br>
+随机梯度下降：随机选取⼩量训练输⼊样本来计算 ∇Cx，进⽽估算梯度 ∇C</p>
+<p>从这得到的教训是调试⼀个神经⽹络不是琐碎的，就像常规编程那样，它是⼀⻔艺术。<br>
+包含这种多层结构 —— 两层或更多隐藏层 —— 的⽹络被称为深度神经⽹络。<br>
+神经⽹络如何使⽤梯度下降算法来学习他们⾃⾝的权重和偏置</p>
+<ul>
+<li><img src="file://C:/Users/10437/Documents/Gridea/post-images1612339857455.png" alt="" loading="lazy"></li>
+<li><img src="https://currydai.com/post-images/1612340529447.png" alt="" loading="lazy"></li>
+<li><img src="https://currydai.com/post-images/1612341065041.png" alt="" loading="lazy"></li>
+<li><img src="https://currydai.com/post-images/1612341076729.png" alt="" loading="lazy"></li>
+</ul>
+<h2 id="12反向传播算法">1.2反向传播算法</h2>
+<p>反向传播的核⼼是⼀个对代价函数 C 关于任何权重 w（或者偏置 b ）的偏导数 ∂C/∂w 的表达式。    这个表达式告诉我们在改变权重和偏置时，代价函数变化的快慢。尽管表达式会有点复杂，不过⾥⾯   也包含⼀种美感，就是每个元素其实是拥有⼀种⾃然的直觉上的解释。所以反向传播不仅仅是⼀种学习的快速算法。实际上它让我们细致领悟如何通过改变权重和偏置来改变整个⽹络的⾏为。因此，这也是学习反向传播细节的重要价值所在。<br>
+<img src="https://currydai.com/post-images/1612923083695.png" alt="" loading="lazy"><br>
+<img src="https://currydai.com/post-images/1612923091031.png" alt="" loading="lazy"><br>
+<img src="https://currydai.com/post-images/1612923096546.png" alt="" loading="lazy"><br>
+<img src="https://currydai.com/post-images/1612923101109.png" alt="" loading="lazy"></p>
+<h3 id="121-反向传播两个假设">1.2.1 反向传播两个假设</h3>
+<p><strong>第⼀个假设就是代价函数可以被写成⼀个在每个训练样本 x 上的代价函数 Cx的均值</strong><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mo>=</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><msub><mo>∑</mo><mi>x</mi></msub><msub><mi>C</mi><mi>x</mi></msub></mrow><annotation encoding="application/x-tex">C=\frac{1}{n}\sum_xC_x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.0016819999999999613em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>:需要这个假设的原因是反向传播实际上是对⼀个独⽴的训练样本计算了 ∂Cx/∂w 和 ∂Cx/∂b。然后我们通过在所有训练样本上进⾏平均化获得 ∂C/∂w 和 ∂C/∂b。<br>
+<strong>第⼆个假设就是代价可以写成神经⽹络输出的函数:</strong></p>
+<h3 id="122-反向传播四个基本方程">1.2.2 反向传播四个基本方程</h3>
+<ul>
+<li>输出层误差方程：增加很⼩的变化 ∆z在神经元的带权输⼊上，使得神经元输出由 σ(z) 变成 σ(z+ ∆z)。这个变化会向⽹络后⾯的层进⾏传播，最终导致整个代价产⽣(∂C/∂z)*∆z的改变</li>
+<li>使用上一层的误差来表示当前层的误差</li>
+<li>代价函数关于网络中任意偏置的改变率</li>
+<li>代价函数关于任意一个权重的改变率<br>
+<img src="https://currydai.com/post-images/1612922794375.png" alt="" loading="lazy">
+<h3 id="123反向传播算法">1.2.3反向传播算法</h3>
+<img src="https://currydai.com/post-images/1612923616222.png" alt="" loading="lazy"><br>
+<img src="https://currydai.com/post-images/1612923752711.png" alt="" loading="lazy"></li>
+</ul>
+<h2 id="13提升神经网络精度">1.3提升神经网络精度</h2>
+<h3 id="131交叉熵函数">1.3.1交叉熵函数</h3>
+<p>二次代价函数vs交叉熵函数：在错误较大情况下，解决二次代价函数学习速度较缓问题<br>
+<img src="https://currydai.com/post-images/1612926108594.png" alt="" loading="lazy"><br>
+<img src="https://currydai.com/post-images/1612937198520.png" alt="" loading="lazy"><br>
+初始误差越⼤，神经元学习得越快。这也能够解决学习速度下降的问题<br>
+解决学习速度缓慢另外一个方法是柔性最大值神经元层(softmax)</p>
+<h3 id="132-过度拟合和规范化">1.3.2 过度拟合和规范化</h3>
+<p>我们的⽹络能够正确地对所有 1000 幅图像进⾏分类！⽽在同时，我们的测试准确率仅仅能够达到 82.27%。所以我们的⽹络实际上在学习训练数据集的特例，⽽不是能够⼀般地进⾏识别。我们的⽹络⼏乎是在单纯记忆训练集合，⽽没有对数字本质进⾏理解能够泛化到测试数据集上。防止过拟合的方法为：</p>
+<ul>
+<li>增加训练样本的数量：⼈为扩展训练数据</li>
+<li>规范化技术：权重衰减（weight decay）或者 L2/L1 规范化</li>
+<li>弃权技术： 弃权（Dropout）是⼀种相当激进的技术。和 L1、L2 规范化不同，弃权技术并不依赖对代价函数的修改。⽽是，在弃权中，我们改变了⽹络本⾝。<br>
+--------扩展样本数量-----------------<br>
+不只旋转，还转换和扭曲图像来扩展训练数据。通过在这个扩展后的数据集上的训练，他们提升到了 98.9% 的准确率。然后还在“弹性扭曲”的数据上进⾏了实验，这是⼀种特殊的为了模仿⼿部肌⾁的随机抖动的图像扭曲⽅法。通过使⽤弹性扭曲扩展的数据，他们最终达到了 99.3% 的分类准确率。他们通过展⽰训练数据的所有类型的变化形式来扩展⽹络的经验。<br>
+--------其中L2规范化具体为：--------<br>
+<img src="https://currydai.com/post-images/1612942583675.png" alt="" loading="lazy"><br>
+规范化可以当做⼀种寻找⼩的权重和最⼩化原始的代价函数之间的折中。这两部分之间相对的重要性就由 λ 的值来控制了：λ 越⼩，就偏向于最⼩化原始代价函数，反之，倾向于⼩的权重。<br>
+⼩的权重在某种程度上，意味着更低的复杂性，也就对数据给出了⼀种更简单却更强⼤解释，因此应该优先选择。</li>
+</ul>
+<h3 id="133-权重初始化">1.3.3 权重初始化</h3>
+<p>权重设置不好会导致这些权重在我们进⾏梯度下降算法时会学习得⾮常缓慢<br>
+<img src="https://currydai.com/post-images/1612943333285.png" alt="" loading="lazy"><br>
+<img src="https://currydai.com/post-images/1612943340982.png" alt="" loading="lazy"></p>
+<h3 id="134超参数设置">1.3.4超参数设置</h3>
+<ul>
+<li>宽泛策略：从简单模型，简单训练样本入手</li>
+<li>学习速率的选择：学习速率主要的⽬的是控制梯度下降的步⻓，监控训练代价是最好的检测步⻓过⼤的⽅法</li>
+<li>使⽤提前停⽌来确定训练的迭代期数量</li>
+<li>正则化参数设置</li>
+<li>小批量大小选择</li>
+<li>自动技术：网格搜索</li>
+</ul>
+<h2 id="14-神经网络可以拟合任何函数">1.4 神经网络可以拟合任何函数</h2>
+<p>结果表明神经⽹络拥有⼀种普遍性。不论我们想要计算什么样的函数，我们都确信存在⼀个神经⽹络可以计算它。</p>
+<h2 id="2-迈向深度学习">2 迈向深度学习</h2>
+<h3 id="21-深度神经网络为何很难训练">2.1 深度神经网络为何很难训练</h3>
+<p>直觉地，额外的隐藏层应当让⽹络能够学到更加复杂的分类函数，然后可以在分类时表现得更好吧。可以肯定的是，事情并没有变差，⾄少新的层次增加上，在最坏的情形下也就是没有影响5。事情并不是这样⼦的。<br>
+⾄少在某些深度神经⽹络中，在我们在隐藏层 BP的时候梯度倾向于变⼩。这意味着在前⾯的隐藏层中的神经元学习速度要慢于后⾯的隐藏层。这⼉我们只在⼀个⽹络中发现了这个现象，其实在多数的神经⽹络中存在着更加根本的导致这个现象出现的原因。这个现象也被称作是消失的梯度问题。<br>
+在深度神经⽹络中的梯度是不稳定的，在前⾯的层中或会消失，或会激增。这种不稳定性才是深度神经⽹络中基于梯度学习的根本问题。这就是我们需要理解的东西，如果可能的话，采取合理的步骤措施解决问题。<br>
+<img src="https://currydai.com/post-images/1612944348671.png" alt="" loading="lazy"><br>
+<img src="https://currydai.com/post-images/1612944424845.png" alt="" loading="lazy"><br>
+两个表⽰式有很多相同的项。但是 ∂C/∂b1还多包含了两个项。由于这些项都是 &lt; 1/4 的。所以 ∂C/∂b1会是 ∂C/∂b3的 1/16 或者更⼩。这其实就是消失的梯度出现的本质原因了。</p>
+<h3 id="22-深度学习">2.2 深度学习</h3>
+<p><img src="https://currydai.com/post-images/1612945572024.png" alt="" loading="lazy"><br>
+这个⽹络从 28 × 28 个输⼊神经元开始，这些神经元⽤于对 MNIST 图像的像素强度进⾏编码。接着的是⼀个卷积层，使⽤⼀个 5×5 局部感受野和 3 个特征映射。其结果是⼀个 3×24×24隐藏特征神经元层。下⼀步是⼀个最⼤值混合层，应⽤于 2 × 2 区域，遍及 3 个特征映射。结果是⼀个 3 × 12 × 12 隐藏特征神经元层。⽹络中最后连接的层是⼀个全连接层。更确切地说，这⼀层将最⼤值混合层的每⼀个神经元连接到每⼀个输出神经元。</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://currydai.com/tag/machine/" class="tag">
+                    Machine
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://currydai.com/post/ji-qi-xue-xi-2zhuan-ti-jie-shao-ru-he-shi-yong-sklearn-zuo-te-zheng-gong-cheng/">
+                  <h3 class="post-title">
+                    【机器学习】[2]专题：如何使用sklearn做特征工程？
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'e9e2094cbb62d2e4fdf8',
+        clientSecret: 'e5f1fea8e3bc04931ca74fe4afd2051bc907e2b0',
+        repo: 'blog-comments',
+        owner: 'currydai',
+        admin: ['currydai'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

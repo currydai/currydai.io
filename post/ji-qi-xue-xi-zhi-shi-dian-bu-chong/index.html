@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>【机器学习】[1]专题：知识框架总览 | Currydai</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://currydai.com/favicon.ico?v=1618845862048">
+<link rel="stylesheet" href="https://currydai.com/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="1. 机器学习包含哪些内容？
+
+监督学习：
+
+线性回归
+逻辑回归
+随机森林
+梯度下降决策树
+SVM
+神经网络
+决策树
+朴素贝叶斯
+KNN
+
+
+无监督学习：
+
+K-Means聚类
+t-SNE
+PCA
+关联规则
+
+
+半监督学习：
+
+图论推理算法..." />
+    <meta name="keywords" content="Machine" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://currydai.com">
+        <img src="https://currydai.com/images/avatar.png?v=1618845862048" class="site-logo">
+        <h1 class="site-title">Currydai</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            Home
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            Table of Contents
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            Classification label
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            About me
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="http://currydai@github.com/" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://twitter.com/daihb30" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://weibo.com/u/5951669823" target="_blank">
+            <i class="fab fa-weibo"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://www.zhihu.com/people/ka-li-35-76" target="_blank">
+            <i class="fab fa-zhihu"></i>
+          </a>
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Share interesting things
+    </div>
+    <div class="site-footer">
+      Powered by <a href="http://currydai@github.com/" target="_blank">Currydai</a> | <a class="rss" href="https://currydai.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">【机器学习】[1]专题：知识框架总览</h2>
+            <div class="post-date">2021-01-30</div>
+            
+            <div class="post-content" v-pre>
+              <h3 id="1-机器学习包含哪些内容">1. 机器学习包含哪些内容？</h3>
+<ul>
+<li><strong>监督学习：</strong>
+<ul>
+<li>线性回归</li>
+<li>逻辑回归</li>
+<li>随机森林</li>
+<li>梯度下降决策树</li>
+<li>SVM</li>
+<li>神经网络</li>
+<li>决策树</li>
+<li>朴素贝叶斯</li>
+<li>KNN</li>
+</ul>
+</li>
+<li><strong>无监督学习：</strong>
+<ul>
+<li>K-Means聚类</li>
+<li>t-SNE</li>
+<li>PCA</li>
+<li>关联规则</li>
+</ul>
+</li>
+<li><strong>半监督学习：</strong>
+<ul>
+<li>图论推理算法</li>
+<li>及拉普拉斯支持向量机</li>
+</ul>
+</li>
+<li><strong>强化学习：</strong>
+<ul>
+<li>Q-learning</li>
+<li>瞬时差分(TD)</li>
+<li>蒙特卡洛树搜索</li>
+<li>A3C</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-sklearn到底有什么"><strong>2. sklearn到底有什么？</strong></h3>
+<h4 id="21-监督学习"><strong>2.1 监督学习</strong></h4>
+<ol>
+<li>广义线性模型
+<ul>
+<li>普通最小二乘</li>
+<li>岭回归(L2正则化)</li>
+<li>Lasso回归(L1正则化)</li>
+<li>多任务Lasso</li>
+<li>弹性网络</li>
+<li>多任务弹性网络</li>
+<li>最小角回归</li>
+<li>LARS Lasso</li>
+<li>正交匹配追踪法(OMP)</li>
+<li>贝叶斯回归</li>
+<li>逻辑回归(分类)</li>
+<li>随机梯度下降SGD</li>
+<li>感知器</li>
+<li>被动攻击算法</li>
+<li>稳健回归</li>
+<li>Huber 回归</li>
+<li>多项式回归</li>
+</ul>
+</li>
+<li>线性和二次判别分析</li>
+<li>内核岭回归</li>
+<li>支持向量机</li>
+<li>随机维度下降</li>
+<li>最邻近</li>
+<li>高斯过程</li>
+<li>交叉分解</li>
+<li>朴素贝叶斯</li>
+<li>决策树</li>
+<li>集成方法</li>
+<li>多类与多标签算法特征选择</li>
+<li>半监督学习</li>
+<li>等式回归</li>
+<li>概率校准</li>
+<li>神经网络模型(有监督)</li>
+</ol>
+<h4 id="22-无监督学习"><strong>2.2 无监督学习</strong></h4>
+<ol start="17">
+<li>高斯混合模型</li>
+<li>流形学习</li>
+<li>聚类</li>
+<li>双聚类</li>
+<li>分解成分中的信号</li>
+<li>协方差估计</li>
+<li>新奇和异常值估计</li>
+<li>密度估计</li>
+<li>神经网络模型(无监督)</li>
+</ol>
+<h4 id="23-模型选择和评估"><strong>2.3 模型选择和评估</strong></h4>
+<ol>
+<li>交叉验证</li>
+<li>调整估计器的超参数</li>
+<li>模型评估：量化预测的质量</li>
+<li>模型持久化</li>
+<li>验证曲线</li>
+</ol>
+<h4 id="24-数据预处理与计算手段"><strong>2.4 数据预处理与计算手段</strong></h4>
+<ol>
+<li>检验：部份依赖图</li>
+<li>数据集转换
+<ul>
+<li>特征联合：Pipeline和Features</li>
+<li>特征提取</li>
+<li>预处理数据</li>
+<li>缺失值插补</li>
+<li>无监督降维</li>
+<li>随机投影</li>
+<li>内核近似</li>
+<li>成对的矩阵类别和核函数</li>
+<li>预测目标的抓换</li>
+</ul>
+</li>
+<li>数据集加载工具
+<ul>
+<li>通用数据集API</li>
+<li>玩具数据集</li>
+<li>真实世界中的数据集</li>
+<li>样本生成器</li>
+<li>加载其他数集</li>
+</ul>
+</li>
+<li>优化计算
+<ul>
+<li>大规模计算的策略</li>
+<li>计算性能</li>
+<li>并行性、资源管理和配置</li>
+</ul>
+</li>
+</ol>
+<h3 id="3-tips"><strong>3. Tips</strong></h3>
+<h4 id="1l1正则化与l2正则化区别"><strong>1.L1正则化与L2正则化区别</strong></h4>
+<p>(https://zhuanlan.zhihu.com/p/29360425)(https://zhuanlan.zhihu.com/p/85630046)<br>
+正则化（Regularization）是机器学习中一种常用的技术，其主要目的是控制模型复杂度，减小过拟合。最基本的正则化方法是在原目标（代价）函数 中添加惩罚项，对复杂度高的模型进行惩罚。<br>
+<img src="https://currydai.com/post-images/1612079169793.png" alt="" loading="lazy"><br>
+- L1正则化：通过稀疏化参数来降低复杂度,可以用来做特征选择<br>
+损失函数：<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>L</mi><mo>(</mo><mi>w</mi><mo>)</mo><mo>=</mo><msub><mi>E</mi><mi>D</mi></msub><mo>(</mo><mi>w</mi><mo>)</mo><mo>+</mo><mfrac><mi>λ</mi><mi>n</mi></mfrac><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><mrow><mi mathvariant="normal">∣</mi><msub><mi>w</mi><mi>i</mi></msub><mi mathvariant="normal">∣</mi></mrow></mrow><annotation encoding="application/x-tex">L(w)=E_D(w)+\frac \lambda {n} \sum_{i=1}^n{|w_i|}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">L</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">D</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.2251079999999999em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801079999999999em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">λ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.804292em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord">∣</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">∣</span></span></span></span></span><br>
+作用：更容易在棱角处取得最优值导致某些w取零<br>
+- L2正则化：通过减少参数值的大小降低复杂度<br>
+损失函数：<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>L</mi><mo>(</mo><mi>w</mi><mo>)</mo><mo>=</mo><msub><mi>E</mi><mi>D</mi></msub><mo>(</mo><mi>w</mi><mo>)</mo><mo>+</mo><mfrac><mi>λ</mi><mrow><mn>2</mn><mi>n</mi></mrow></mfrac><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><msubsup><mi>w</mi><mi>i</mi><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">L(w)=E_D(w)+\frac \lambda {2n} \sum_{i=1}^n{w_i^2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">L</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">D</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.2251079999999999em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801079999999999em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mord mathdefault mtight">n</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">λ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.804292em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-2.441336em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.258664em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://currydai.com/tag/machine/" class="tag">
+                    Machine
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://currydai.com/post/kaggle-house-prices-advanced-regression-techniques/">
+                  <h3 class="post-title">
+                    【ML实践】[Kaggle1]House Prices - Advanced Regression Techniques
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'e9e2094cbb62d2e4fdf8',
+        clientSecret: 'e5f1fea8e3bc04931ca74fe4afd2051bc907e2b0',
+        repo: 'blog-comments',
+        owner: 'currydai',
+        admin: ['currydai'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

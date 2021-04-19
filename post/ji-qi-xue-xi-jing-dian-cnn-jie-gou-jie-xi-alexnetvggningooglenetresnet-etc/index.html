@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>【机器学习】经典CNN结构解析：AlexNet、VGG、NIN、GoogLeNet、ResNet etc. | Currydai</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://currydai.com/favicon.ico?v=1618845862048">
+<link rel="stylesheet" href="https://currydai.com/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="1.走进CNN
+1.1CNN起源
+卷积神经网络（Convolutional Neural Networks, CNN）是一类包含卷积计算且具有深度结构的前馈神经网络。
+第一个卷积神经网络是1987年由Alexander Waibel等提出的..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://currydai.com">
+        <img src="https://currydai.com/images/avatar.png?v=1618845862048" class="site-logo">
+        <h1 class="site-title">Currydai</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            Home
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            Table of Contents
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            Classification label
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            About me
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="http://currydai@github.com/" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://twitter.com/daihb30" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://weibo.com/u/5951669823" target="_blank">
+            <i class="fab fa-weibo"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://www.zhihu.com/people/ka-li-35-76" target="_blank">
+            <i class="fab fa-zhihu"></i>
+          </a>
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Share interesting things
+    </div>
+    <div class="site-footer">
+      Powered by <a href="http://currydai@github.com/" target="_blank">Currydai</a> | <a class="rss" href="https://currydai.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">【机器学习】经典CNN结构解析：AlexNet、VGG、NIN、GoogLeNet、ResNet etc.</h2>
+            <div class="post-date">2021-02-24</div>
+            
+            <div class="post-content" v-pre>
+              <h2 id="1走进cnn">1.走进CNN</h2>
+<h3 id="11cnn起源">1.1CNN起源</h3>
+<p>卷积神经网络（Convolutional Neural Networks, CNN）是一类包含卷积计算且具有深度结构的前馈神经网络。<br>
+第一个卷积神经网络是<strong>1987年</strong>由Alexander Waibel等提出的时间延迟网络（Time Delay Neural Network, TDNN）。<br>
+<strong>1988年</strong>，Wei Zhang提出了第一个二维卷积神经网络：平移不变人工神经网络（SIANN），并将其应用于检测医学影像 。<br>
+<strong>1989年</strong>Yann LeCun同样构建了应用于计算机视觉问题的卷积神经网络，即LeNet的最初版本。LeNet包含两个卷积层，2个全连接层，共计6万个学习参数，规模远超TDNN和SIANN，且在结构上与现代的卷积神经网络十分接近。LeCun (1989)  对权重进行随机初始化后使用了随机梯度下降（Stochastic Gradient Descent, SGD）进行学习，这一策略被其后的深度学习研究所保留。此外，LeCun (1989)在论述其网络结构时首次使用了“卷积”一词 ，“卷积神经网络”也因此得名。这一时期为各类图像处理问题设计的卷积神经网络停留在了研究阶段，应用端的推广较少 。<br>
+<strong>1998年</strong>Yann LeCun及其合作者构建了更加完备的卷积神经网络LeNet-5并在手写数字的识别问题中取得成功，在原有设计中加入了池化层对输入特征进行筛选，LeNet-5及其后产生的变体定义了现代卷积神经网络的基本结构，其构筑中交替出现的卷积层-池化层被认为能够提取输入<strong>图像的平移不变特征</strong>。<br>
+在<strong>2006年</strong>深度学习理论被提出后 ，卷积神经网络的表征学习能力得到了关注，并随着数值计算设备的更新得到发展。<br>
+<strong>2012年</strong>的AlexNet开始，得到GPU计算集群支持的复杂卷积神经网络多次成为ImageNet大规模视觉识别竞赛ILSVRC） 的优胜算法，包括2013年的ZFNet 、2014年的VGGNet、GoogLeNet 和2015年的ResNet。AlexNet 发表的 2012 年是具有里程碑意义的一年。在 2012 年之前，深度神经网络在机器学习领域几乎是一潭死水。但后来，Krizhevsky 和他在多伦多大学的同事们在一项备受瞩目的图像识别竞赛提交了参赛作品，并取得了比以往任何成绩都要精确得多的成果。几乎一夜之间，深度神经网络成为图像识别的主要技术。其他使用该技术的研究人员很快证明了图像识别精度的进一步飞跃。</p>
+<h3 id="12理解cnn">1.2理解CNN</h3>
+<p>卷积神经网络最初是服务于画面识别的，所以我们先来看看画面识别的实质是什么。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://currydai.com/post/shu-xue-tong-ji-xue-zhong-chang-jian-jian-yan-fang-fa/">
+                  <h3 class="post-title">
+                    【数学】统计学中常见检验方法
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'e9e2094cbb62d2e4fdf8',
+        clientSecret: 'e5f1fea8e3bc04931ca74fe4afd2051bc907e2b0',
+        repo: 'blog-comments',
+        owner: 'currydai',
+        admin: ['currydai'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

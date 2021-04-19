@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>【ML实践】[Kaggle1]House Prices - Advanced Regression Techniques | Currydai</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://currydai.com/favicon.ico?v=1618845862048">
+<link rel="stylesheet" href="https://currydai.com/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="1.目的
+预测房价，需要从众多可能的影响因子中挑选出最能预测房价的因子来建立模型，用于预测房价。
+
+2.思路
+数据分布特征-&gt;挑选特征-&gt;交叉验证-&gt;选择模型-&gt;实现预测
+
+3.处理
+3.1特征可视化分析
+SaleP..." />
+    <meta name="keywords" content="Machine" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://currydai.com">
+        <img src="https://currydai.com/images/avatar.png?v=1618845862048" class="site-logo">
+        <h1 class="site-title">Currydai</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            Home
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            Table of Contents
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            Classification label
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            About me
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="http://currydai@github.com/" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://twitter.com/daihb30" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://weibo.com/u/5951669823" target="_blank">
+            <i class="fab fa-weibo"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://www.zhihu.com/people/ka-li-35-76" target="_blank">
+            <i class="fab fa-zhihu"></i>
+          </a>
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Share interesting things
+    </div>
+    <div class="site-footer">
+      Powered by <a href="http://currydai@github.com/" target="_blank">Currydai</a> | <a class="rss" href="https://currydai.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">【ML实践】[Kaggle1]House Prices - Advanced Regression Techniques</h2>
+            <div class="post-date">2021-01-30</div>
+            
+            <div class="post-content" v-pre>
+              <h2 id="1目的">1.目的</h2>
+<pre><code>预测房价，需要从众多可能的影响因子中挑选出最能预测房价的因子来建立模型，用于预测房价。
+</code></pre>
+<h2 id="2思路">2.思路</h2>
+<pre><code>数据分布特征-&gt;挑选特征-&gt;交叉验证-&gt;选择模型-&gt;实现预测
+</code></pre>
+<h2 id="3处理">3.处理</h2>
+<h3 id="31特征可视化分析">3.1特征可视化分析</h3>
+<pre><code>SalePrice - the property's sale price in dollars. This is the target 
+1.MSSubClass: The building class 建筑类别
+2.MSZoning: The general zoning classification 常规分区分类
+3.LotFrontage: Linear feet of street connected to property 连接物业距离
+4.LotArea: Lot size in square feet 平方尺大小
+5.Street: Type of road access 道路通行类型
+6.Alley: Type of alley access 胡同通道类型
+7.LotShape: General shape of property 形状
+8.LandContour: Flatness of the property 房屋平整度
+9.Utilities: Type of utilities available 实用类性
+10.LotConfig: Lot configuration 批次配置
+11.LandSlope: Slope of property 物业的坡度
+12.Neighborhood: Physical locations within Ames city limits 市区的地理位置
+13.Condition1: Proximity to main road or railroad 接近主要公路或铁路
+14.Condition2: Proximity to main road or railroad (if a second is present)
+15.BldgType: Type of dwelling 住宅类型
+16.HouseStyle: Style of dwelling 住宅风格
+17.OverallQual: Overall material and finish quality 整体材料和表面质量
+18.OverallCond: Overall condition rating 总体状况评分
+19.YearBuilt: Original construction date 原始施工日期
+20.YearRemodAdd: Remodel date 改型日期
+21.RoofStyle: Type of roof 屋顶类型
+22.RoofMatl: Roof material 屋顶材料
+23.Exterior1st: Exterior covering on house 房屋外墙
+24.Exterior2nd: Exterior covering on house (if more than one material)
+25.MasVnrType: Masonry veneer type 石工饰面类型
+26.MasVnrArea: Masonry veneer area in square feet 砌面贴面面积
+27.ExterQual: Exterior material quality 外部材料质量
+28.ExterCond: Present condition of the material on the exterior 外部材料状态
+29.Foundation: Type of foundation 基础类型
+30.BsmtQual: Height of the basement 地下室的高度
+31.BsmtCond: General condition of the basement 地下室的一般状况
+32.BsmtExposure: Walkout or garden level basement walls 地下室墙
+33.BsmtFinType1: Quality of basement finished area 地下室成品区域的质量
+34.BsmtFinSF1: Type 1 finished square feet 1型成品平方英尺
+35.BsmtFinType2: Quality of second finished area (if present)
+36.BsmtFinSF2: Type 2 finished square feet 2型成品平方英尺
+37.BsmtUnfSF: Unfinished square feet of basement area 地下室未完成的平方英尺
+38.TotalBsmtSF: Total square feet of basement area 地下室总平方英尺
+39.Heating: Type of heating 加热方式
+40.HeatingQC: Heating quality and condition 加热质量和条件
+41.CentralAir: Central air conditioning 中央空调
+42.Electrical: Electrical system  电气系统
+43.1stFlrSF: First Floor square feet 一楼平方英尺
+44.2ndFlrSF: Second floor square feet 二楼平方英尺
+45.LowQualFinSF: Low quality finished square feet (all floors)低质量成品平方
+46.GrLivArea: Above grade (ground) living area square feet地面以上的居住面积
+47.BsmtFullBath: Basement full bathrooms 地下室完整的浴室
+48.BsmtHalfBath: Basement half bathrooms 地下室半浴室
+49.FullBath: Full bathrooms above grade 满级浴室
+50.HalfBath: Half baths above grade 半浴
+51.Bedroom: Number of bedrooms above basement level 卧室数量
+52.Kitchen: Number of kitchens 厨房数量
+53.KitchenQual: Kitchen quality 厨房质量
+54.TotRmsAbvGrd: Total rooms above grade (does not include bathrooms) 客房
+55.Functional: Home functionality rating 家庭功能等级
+56.Fireplaces: Number of fireplaces 壁炉数量
+57.FireplaceQu: Fireplace quality 壁炉质量
+58.GarageType: Garage location 车库位置
+59.GarageYrBlt: Year garage was built 年车库已建成
+60.GarageFinish: Interior finish of the garage 车库的内部装饰
+61.GarageCars: Size of garage in car capacity 车库中车库的大小
+62.GarageArea: Size of garage in square feet 车库的大小（平方英尺）
+63.GarageQual: Garage quality 车库质量
+64.GarageCond: Garage condition  车库条件
+65.PavedDrive: Paved driveway  铺砌的车道
+66.WoodDeckSF: Wood deck area in square feet  木制甲板面积
+67.OpenPorchSF: Open porch area in square feet 开放式阳台面积
+68.EnclosedPorch: Enclosed porch area in square feet 封闭式门廊面积
+69.3SsnPorch: Three season porch area in square feet 平方英尺的三季门廊面积
+70.ScreenPorch: Screen porch area in square feet  屏幕门廊面积
+71.PoolArea: Pool area in square feet 游泳池面积
+72.PoolQC: Pool quality 泳池质量
+73.Fence: Fence quality 围栏质量
+74.MiscFeature: Miscellaneous feature not covered in other categories 杂项
+75.MiscVal: Value of miscellaneous feature 杂项功能的值
+76.MoSold: Month Sold 已售一个月
+77.YrSold: Year Sold 年售
+78.SaleType: Type of sale  销售类型
+79.SaleCondition: Condition of sale 销售条件
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://currydai.com/tag/machine/" class="tag">
+                    Machine
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://currydai.com/post/kaggle-2-1indoor-location-and-navigation/">
+                  <h3 class="post-title">
+                    【ML实践】[Kaggle2]Indoor Location &amp; Navigation
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'e9e2094cbb62d2e4fdf8',
+        clientSecret: 'e5f1fea8e3bc04931ca74fe4afd2051bc907e2b0',
+        repo: 'blog-comments',
+        owner: 'currydai',
+        admin: ['currydai'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

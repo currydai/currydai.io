@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>【编程】C++学习与进阶 | Currydai</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://currydai.com/favicon.ico?v=1618845862048">
+<link rel="stylesheet" href="https://currydai.com/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="1.主要内容包括：
+- C++远征之起航篇
+- C++远征之封装篇
+- C++远征之继承篇
+- C++远征之多态篇
+- C++远征之模板篇
+- C++远征之离港篇
+
+2.C++远征之起航篇
+Pass
+
+3.C++远征之离港篇
+* 引用：就是..." />
+    <meta name="keywords" content="Program" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://currydai.com">
+        <img src="https://currydai.com/images/avatar.png?v=1618845862048" class="site-logo">
+        <h1 class="site-title">Currydai</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            Home
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            Table of Contents
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            Classification label
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            About me
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="http://currydai@github.com/" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://twitter.com/daihb30" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://weibo.com/u/5951669823" target="_blank">
+            <i class="fab fa-weibo"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://www.zhihu.com/people/ka-li-35-76" target="_blank">
+            <i class="fab fa-zhihu"></i>
+          </a>
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Share interesting things
+    </div>
+    <div class="site-footer">
+      Powered by <a href="http://currydai@github.com/" target="_blank">Currydai</a> | <a class="rss" href="https://currydai.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">【编程】C++学习与进阶</h2>
+            <div class="post-date">2021-01-27</div>
+            
+            <div class="post-content" v-pre>
+              <h2 id="1主要内容包括">1.主要内容包括：</h2>
+<pre><code>- C++远征之起航篇
+- C++远征之封装篇
+- C++远征之继承篇
+- C++远征之多态篇
+- C++远征之模板篇
+- C++远征之离港篇
+</code></pre>
+<h2 id="2c远征之起航篇">2.C++远征之起航篇</h2>
+<pre><code>Pass
+</code></pre>
+<h2 id="3c远征之离港篇">3.C++远征之离港篇</h2>
+<pre><code>* 引用：就是变量的别名，int &amp;y=x
+* const与指针类关系,*y是内用（数据），y是指针（指向关系）
+* const与引用关系，&amp;y两层含义，在左边是定义引用关系，在右边是取地址操作
+</code></pre>
+<h2 id="4c远征之封装篇">4.C++远征之封装篇</h2>
+<ul>
+<li>类外定义</li>
+<li>内存五区：栈 堆 全局区 常量区 代码区</li>
+<li>对象放在栈区，方法放在代码区供不同对象调用</li>
+<li>对象初始化：构造函数，初始化列表</li>
+<li>构造函数：有且自动执行一次，与类重名，无返回值，多个重载，无构造函数时编译器自动生成</li>
+<li>拷贝构造函数：浅拷贝 深拷贝</li>
+<li>对象指针：把对象生命成指针，Coordinate *p=new Coordinate;p-&gt;m_iX=1;p-&gt;m_iY=2;</li>
+<li>对象成员：作为一个对象来说，他成为另外一个类的数据成员</li>
+<li>对象成员指针：对象的指针作为另外一个类的数据成员。在类中使用了对象成员指针后，在析构函数中要删除指针！</li>
+<li>this指针：this指向对象的指针</li>
+<li>常对象成员：常对象只能调用常成员函数，不能调用普通函数；普通对象能够调用常成员函数，也能调用普通成员函数。</li>
+<li>常指针vs常引用</li>
+</ul>
+<h2 id="5c远征之继承篇">5.C++远征之继承篇</h2>
+<ul>
+<li>基类/派生类 父类/子类</li>
+<li>继承方式：公有继承/保护继承/私有继承<br>
+<img src="https://currydai.com/post-images/1613890403790.png" alt="" loading="lazy"><br>
+<img src="https://currydai.com/post-images/1613910614401.png" alt="" loading="lazy"><br>
+<img src="https://currydai.com/post-images/1613910646580.png" alt="" loading="lazy"><br>
+不同继承方式的影响主要体现在：<br>
+1、<strong>派生类成员</strong>对基类成员的访问控制。<br>
+2、<strong>派生类对象</strong>对基类成员的访问控制。<br>
+三种继承方式：<br>
+1、公有继承（public）<br>
+① 基类的public和protected成员的访问属性在派生类中保持不变，但基类的private成员不可访问。<br>
+② 派生类中的成员函数可以直接访问基类中的public和protected成员，但不能访问基类的private成员。<br>
+③ 通过派生类的对象只能访问基类的public成员。<br>
+2、私有继承（private）<br>
+① 基类的public和protected成员都以private身份出现在派生类中，但基类的private成员不可访问。<br>
+② 派生类中的成员函数可以直接访问基类中的public和protected成员，但不能访问基类的private成员<br>
+③ 通过派生类的对象不能访问基类中的任何成员。<br>
+3、保护继承（protected）<br>
+① 基类的public和protected成员都以protected身份出现在派生类中，但基类的private成员不可访问。<br>
+② 派生类中的成员函数可以直接访问基类中的public和protected成员，但不能访问基类的private成员。<br>
+③ 通过派生类的对象不能访问基类中的任何成员。<br>
+protected成员的特点与作用：<br>
+对建立其所在类对象的模块来说（水平访问时），它与private成员性质相同。对于其派上类来说（垂直访问时），它与public成员的性质相同。既实现了数据隐藏，又方便继承，实现了代码重用。</li>
+<li>隐藏：父子关系 成员同名</li>
+<li>is a</li>
+<li>多重继承</li>
+<li>多继承</li>
+<li>虚继承：只要是父类虚继承，子类都是默认虚继承，也就是说子类的子类也是虚继承，子类的子类的子类也是虚继承</li>
+</ul>
+<h2 id="6c远征之多态篇">6.C++远征之多态篇</h2>
+<ul>
+<li>多态：相同对象收到不同消息或者不同对象收到相同消息时产生不同的动作</li>
+<li>静态多态（早绑定）：单个类</li>
+<li>动态多态（晚绑定）：以封装和继承为基础（多个类）</li>
+<li>虚函数：父类想要实现多态的成员函数前加virtual，子类同时也要加（不加系统自动加）</li>
+<li>虚析构函数：解决多态过程中内存泄露问题</li>
+<li>virtual:1.不能修饰普通函数2.不同修饰静态函数3.不能修饰内联函数4.不能修饰构造函数</li>
+<li>函数的覆盖和隐藏</li>
+<li>虚函数表</li>
+<li>纯虚函数</li>
+<li>抽象类：含有纯虚函数的类，抽象类无法实例化对象</li>
+<li>接口类：仅含有纯虚函数的类成为接口类，只有成员函数，成员函数都是纯虚函数。接口类更多表达一种能力和协议</li>
+<li>RTTI:运行时类型识别</li>
+<li>异常处理：try....catch...       throw</li>
+<li>常见的异常：数组下表越界+除数为0+内存不足</li>
+</ul>
+<h2 id="7c远征之模板篇">7.C++远征之模板篇</h2>
+<ul>
+<li>模板函数 模板类 标准模板类</li>
+<li></li>
+</ul>
+<h2 id="finalc基础知识持续补充">Final:C++基础知识(持续补充)</h2>
+<p>C++全称为c with classes,由Enter Bjarne Stroustrup在使用Simula(首次使用类的语言)编写用于分布式计算机系统的模拟器时，希望有一种高效和模块化的工具，于是在C的基础上为C增加了类机制，也就是面向对象，1983年完成了C++的第一个版本。C++相比于C有以下特点：</p>
+<ol>
+<li>完全兼容C语法(指针等)</li>
+<li>支持面向对象的编程思想</li>
+<li>支持运算符重载</li>
+<li>支持泛型编程与模板</li>
+<li>支持异常处理</li>
+<li>类型检查严格<br>
+C++作为一个高级编程思想，并不只是仅仅支持一个面向对象的编程思想，还包括面向过程、模板(泛型编程)等思想，应用在不同的方面上，以提高代码的使用率以及效率。</li>
+</ol>
+<h3 id="1指针与引用">1.指针与引用</h3>
+<p><strong>指针</strong>：对于一个类型T，T*就是指向T的指针类型。也就是一个T*类型的变量能够保存一个T对象的地址，T可以加入一些限定词，比如const、volatile等<br>
+<strong>引用</strong>：引用是一个对象的别名，主要用于函数参数和返回值类型，T&amp;表示T类型的引用</p>
+<ol>
+<li><strong>引用不可以为空，指针可以为空</strong>-&gt;引用定义必须初始化,使用指针前必须判空操作</li>
+<li><strong>引用不可以改变指向，但可以更改初始化对象的内容</strong>-&gt;引用的改变是对象，指向不变</li>
+<li><strong>引用的大小是所指向的变量的大小，指针的大小之指针类型的大小(四字节)</strong></li>
+<li><strong>引用比指针更安全，不存在空引用</strong>-&gt;const指针虽然不能改变指向但有可能存在空指针<br>
+<strong>const</strong></li>
+<li><strong>常量指针</strong>：指向常量的指针-&gt;在指针定义语句的类型前加const,表示指向的对象是常量</li>
+<li><strong>常量引用</strong>：指向常量的引用-&gt;在引用定义语句的类型加const，表示指向的对象是常量</li>
+<li><strong>指针常量</strong>：指针本身是常量-&gt;在指针定义语句的指针名前加const，必须初始化</li>
+<li><strong>引用常量</strong>：引用天生俱来的属性，不用在加const</li>
+<li><strong>常量指针常量</strong>：指向常量的指针常量-&gt;必须初始化并且不能当作左值赋值<br>
+<strong>总结&lt;1&gt;</strong>：const:无非是修饰指针还是指针指向的数据，助记方法：以*号为分界线，如果是出现在右边，修饰指针为指针常量；如果在左边，修饰数据为常量指针。而引用本身就是指针常量，不可以改变指向。<br>
+<strong>总结&lt;2&gt;</strong>：引用做函数参数-&gt;函数传参，可以利用引用的技术让形参修饰实参，可以简化指针修改实参<br>
+引用做函数返回值-&gt;在内存中不产生被返回值的副本</li>
+</ol>
+<h2 id="2结构体">2.结构体</h2>
+<pre><code>typedef struct{
+    int x;
+    iny y;
+}Coord;
+</code></pre>
+<h2 id="3宏定义">3.宏定义</h2>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://currydai.com/tag/program/" class="tag">
+                    Program
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://currydai.com/post/Nice to meet you/">
+                  <h3 class="post-title">
+                    【导语】世界那么大，很高兴遇见你
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'e9e2094cbb62d2e4fdf8',
+        clientSecret: 'e5f1fea8e3bc04931ca74fe4afd2051bc907e2b0',
+        repo: 'blog-comments',
+        owner: 'currydai',
+        admin: ['currydai'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

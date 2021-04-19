@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>【编程】C++开发遇到的一些问题和解释整理 | Currydai</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://currydai.com/favicon.ico?v=1618845862048">
+<link rel="stylesheet" href="https://currydai.com/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="在实践中，常常遇到一些方法或者名词发生混淆。本着好记性不如烂笔头，那就全都整理一起。
+0.基础相关
+0.1 指针 引用 解引用
+在c++中，*和&amp;在不同的地方有着不同的意义。
+
+引用：&amp;表示的是引用，就表示函数内的变量和主函..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://currydai.com">
+        <img src="https://currydai.com/images/avatar.png?v=1618845862048" class="site-logo">
+        <h1 class="site-title">Currydai</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            Home
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            Table of Contents
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            Classification label
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            About me
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="http://currydai@github.com/" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://twitter.com/daihb30" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://weibo.com/u/5951669823" target="_blank">
+            <i class="fab fa-weibo"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://www.zhihu.com/people/ka-li-35-76" target="_blank">
+            <i class="fab fa-zhihu"></i>
+          </a>
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Share interesting things
+    </div>
+    <div class="site-footer">
+      Powered by <a href="http://currydai@github.com/" target="_blank">Currydai</a> | <a class="rss" href="https://currydai.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">【编程】C++开发遇到的一些问题和解释整理</h2>
+            <div class="post-date">2021-03-17</div>
+            
+            <div class="post-content" v-pre>
+              <h4 id="在实践中常常遇到一些方法或者名词发生混淆-本着好记性不如烂笔头那就全都整理一起">在实践中，常常遇到一些方法或者名词发生混淆。本着好记性不如烂笔头，那就全都整理一起。</h4>
+<h2 id="0基础相关">0.基础相关</h2>
+<h3 id="01-指针-引用-解引用">0.1 指针 引用 解引用</h3>
+<p>在c++中，*和&amp;在不同的地方有着不同的意义。</p>
+<ul>
+<li>引用：&amp;表示的是引用，就表示函数内的变量和主函数的变量是同一个，函数内改变它的值，主函数相应的变量也就跟着改变了；没有&amp;符号，就表示函数内的变量是主函数的变量的一个副本，在函数内改变其值，是不会改变主函数中变量的值的。</li>
+<li>解引用：直接去寻找指针所指的地址里面的内容，此内容可以是任何数据类型，当然也可以是指针。例如下面代码，此时的*表示声明一个指针p,第5行让指针p指向a的地址。因此第6行输出的是a在内存中的地址。而第7行就是解引用。具体解释指针p所指向的内存地址里存放的内容。</li>
+</ul>
+<pre><code> 1 #include &lt;iostream&gt;
+ 2 using namespace std;
+ 3 int main(){
+ 4     int *p ,a=6;
+ 5     p=&amp;a;
+ 6     cout&lt;&lt;p&lt;&lt;endl;
+ 7     cout&lt;&lt;*p&lt;&lt;endl;
+ 8 //    cout&lt;&lt;&amp;*p&lt;&lt;endl;
+ 9 //    cout&lt;&lt;*(&amp;*p)&lt;&lt;endl;
+10     return 0;
+11 }
+</code></pre>
+<h2 id="1类与对象相关">1.类与对象相关</h2>
+<h3 id="11对象指针">1.1对象指针</h3>
+<p>对象的声明有两种，一种在栈上，一种在堆上。因此类的成员函数有两种调用方式，一种是由对象调用，另一种是由对象指针调用。</p>
+<pre><code>//=============================================
+//对象指针使用成员函数
+//=============================================
+
+#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+using namespace std;
+
+/**
+*类定义体
+*/
+class Date{
+private:
+    int year,month,day;
+public:
+    //在类定义体内定义成员函数，不需要在函数名前冠以类名
+    void set(int y,int m,int d)
+    {
+        year = y;
+        month = m;
+        day = d;
+    };
+    bool isLeapYear();
+    void print();
+};
+
+
+//使用日期类
+int main()
+{
+    Date* dp = new Date;
+    dp-&gt;set(2018,2,6);
+    if((*dp).isLeapYear())
+    {
+        dp-&gt;print();
+    }
+    return 0;
+}
+
+//成员函数类定义体外定义
+
+inline bool Date::isLeapYear() //显示内联
+{
+    return (year%4==0 &amp;&amp; year%100!=0)||(year%400==0);
+}
+
+void Date::print()
+{
+    cout&lt;&lt;setfill('0');
+    cout&lt;&lt;setw(4)&lt;&lt;year&lt;&lt;'-'&lt;&lt;setw(2)&lt;&lt;month&lt;&lt;'-'&lt;&lt;setw(2)&lt;&lt;day&lt;&lt;'\n';
+    cout&lt;&lt;setfill(' ');
+}
+</code></pre>
+<p>特别需要注意的是：</p>
+<ol>
+<li>无虚函数的继承</li>
+</ol>
+<ul>
+<li>如果以一个基础类指针指向一个派生类对象，那么经由该指针只能访问基础类定义的函数（静态绑定）。</li>
+<li>如果以一个派生类类指针指向一个基础类对象，必须先做强制转型动作（explicit cast），这种做法很危险，也不符合生活习惯，在程序设计上也会给程序员带来困扰。（一般不会这么去使用）<br>
+通常来说，子类总是含有一些父类没有的成员变量，或者方法函数。而子类肯定含有父类所有的成员变量和方法函数。所以用父类指针指向子类时，没有问题，因为父类有的，子类都有，不会出现非法访问问题。</li>
+</ul>
+<ol start="2">
+<li>有虚函数的继承</li>
+</ol>
+<ul>
+<li>有虚函数的继承，那么父类指针指向子类对象就是我们常见的多态实现，也就是动态。</li>
+<li>在父类里可以声明纯虚函数和定义虚函数，使用父类指针访问虚函数或纯虚函数的时候，访问到的是子类里重写的函数。当然，对于虚函数，如果子类里没有对其重写的话，仍然访问到父类里定义的虚函数。可见虚函数和纯虚函数的却别仅仅在于：纯虚函数没有定义,只有声明。</li>
+</ul>
+<ol start="3">
+<li>代码演示</li>
+</ol>
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+ 
+class Base_J 
+{
+public:
+	Base_J()
+	{
+		cout &lt;&lt; &quot;Base Created&quot; &lt;&lt; endl;
+	}
+	~Base_J()
+    //virtual ~Base_J()
+	{
+		cout &lt;&lt; &quot;Base Destroyed&quot; &lt;&lt; endl;
+	}
+};
+ 
+class Derived_J : public Base_J
+{
+public:
+	Derived_J()
+	{
+		cout &lt;&lt; &quot;Derived Created&quot; &lt;&lt; endl;
+	}
+	~Derived_J()
+	{
+		cout &lt;&lt; &quot;Derived Destroyed&quot; &lt;&lt; endl;
+	}
+};
+ 
+int main()
+{
+	Base_J *pB = new Derived_J();
+	delete pB;
+	pB = NULL;
+	system(&quot;pause&quot;);
+	return 0;
+</code></pre>
+<ul>
+<li>如果父类析构函数没有virtual,依次会输出：Base Destroyed，Derived Created，Base Destroyed</li>
+<li>如果父类析构函数中有virtual，依次会输出：Base Destroyed，Derived Created，Derived Destroyed，Base Destroyed<br>
+因此静态绑定时，对象销毁时只调用了父类的析构函数。如果这时子类的析构函数中有关于内存释放的操作，将会造成内存泄露。所以需要给父类的析构函数加上virtual。<br>
+切记：<strong>C++中开发中，基类中的析构函数一般都是虚函数</strong></li>
+</ul>
+<h3 id="12-静态类成员">1.2 静态类成员</h3>
+<p>无论创建多少了对象，程序都只创建一个静态类变量副本，类的所有对象都共享同一个静态成员。这对于所有类对象都具有相同值的类私有数据是非常方便的。但是不能再类的声明中初始化静态成员变量，要在类外声明。</p>
+<ul>
+<li>使用场景：构造函数中包含static变量++以及析构函数中包含--就可以统计类的对象总数</li>
+<li>类里面定义一个指向自己的静态成员指针变量</li>
+</ul>
+<pre><code>class a
+{
+ public:
+        void  printa() { cout&lt;&lt;&quot;class a&quot;;}
+ public:
+       static a* my;
+}
+</code></pre>
+<p>在类里面定义自己的一个静态变量，当这个类的所有对象都需要与某个同类的对象发生关系时，就这么用。这个静态成员一般是全局存在的（废话），而且有特殊地位的对象。注意，static成员一定要在类外初始化！！</p>
+<h3 id="13-构造函数">1.3 构造函数</h3>
+<p>该类对象被创建时，编译系统对象分配内存空间，并自动调用该构造函数-&gt;<strong>由构造函数完成成员的初始化工作</strong>。<br>
+构造函数的种类：</p>
+<ul>
+<li>无参数构造函数：如果创建一个类你没有写任何构造函数,则系统会自动生成默认的无参构造函数，函数为空，什么都不做。</li>
+<li>一般构造函数（也称重载构造函数）:一般构造函数可以有各种参数形式,一个类可以有多个一般构造函数，前提是参数的个数或者类型不同（基于c++的重载函数原理）<pre><code>class Point
+  {
+  public:
+      int x;
+      int y;
+  public:
+      Point()
+      {
+          this-&gt;x=0;
+          this-&gt;y=0;
+      }
+      Point(int x,int y)
+      {
+          this-&gt;x=x;
+          this-&gt;y=y;
+      }
+  };
+</code></pre>
+</li>
+<li>复制构造函数（也称为拷贝构造函数）:新建一个对象并将其初始化为同类现有对象时，复制构造函数都将被调用。这在很多情况下都可能发生，最常见的情况是新对象显式地初始化为现有的对象。例如，假设motto是一个StringBad对象，则下面4种声明都将调用复制构造函数：</li>
+</ul>
+<pre><code>StringBad ditto(motto);
+StringBad metoo = motto;
+StringBad also = StringBad(motto);
+StringBad * pStringBad = new StringBad(motto);
+</code></pre>
+<pre><code>class Node
+{
+public:
+    int index;
+    Node* left;
+    Node* right;
+public:
+    Node(int i)   //构造函数，带一个参数
+    {
+        index=i;
+        left=0;
+        right=0;
+    }
+    Node()    //构造函数，不带参数
+    {
+        index=0;
+        left=0;
+        right=0;
+    }
+    Node（const Node&amp; t)  //拷贝构造函数的特点是参数表是一个(const className&amp;),t是自定义的变量名
+    {
+        this-&gt;index=t.index;
+        left=0;
+        right=0;
+    }
+}
+</code></pre>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://currydai.com/post/ji-qi-xue-xi-ji-yu-keras-kuang-jia-de-gpu-jia-su-huan-jing-da-jian/">
+                  <h3 class="post-title">
+                    【机器学习】基于Keras框架的GPU加速环境搭建
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'e9e2094cbb62d2e4fdf8',
+        clientSecret: 'e5f1fea8e3bc04931ca74fe4afd2051bc907e2b0',
+        repo: 'blog-comments',
+        owner: 'currydai',
+        admin: ['currydai'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

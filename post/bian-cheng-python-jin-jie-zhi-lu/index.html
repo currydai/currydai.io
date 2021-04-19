@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>【编程】python难点整理 | Currydai</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://currydai.com/favicon.ico?v=1618845862048">
+<link rel="stylesheet" href="https://currydai.com/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="1.python模块化
+简单的模块化方式
+可以把函数、类、常量拆分到不同的文件，把它们放在同一个文件夹，然后使用  from your_file import function_name, class_name 的方式调用。之后，这些函数和..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://currydai.com">
+        <img src="https://currydai.com/images/avatar.png?v=1618845862048" class="site-logo">
+        <h1 class="site-title">Currydai</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            Home
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            Table of Contents
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            Classification label
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            About me
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="http://currydai@github.com/" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://twitter.com/daihb30" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://weibo.com/u/5951669823" target="_blank">
+            <i class="fab fa-weibo"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://www.zhihu.com/people/ka-li-35-76" target="_blank">
+            <i class="fab fa-zhihu"></i>
+          </a>
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Share interesting things
+    </div>
+    <div class="site-footer">
+      Powered by <a href="http://currydai@github.com/" target="_blank">Currydai</a> | <a class="rss" href="https://currydai.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">【编程】python难点整理</h2>
+            <div class="post-date">2021-03-08</div>
+            
+            <div class="post-content" v-pre>
+              <h3 id="1python模块化">1.python模块化</h3>
+<h4 id="简单的模块化方式">简单的模块化方式</h4>
+<p>可以把函数、类、常量拆分到不同的文件，把它们放在同一个文件夹，然后使用  from your_file import function_name, class_name 的方式调用。之后，这些函数和类就可以在文件内直接使用了</p>
+<h4 id="复杂的模块化">复杂的模块化</h4>
+<p>main.py 调用子目录的模块时，只需要使用 . 代替 /  来表示子目录，utils.utils 表示 utils 子文件夹下的 utils.py 模块就行。<br>
+那如果我们想调用上层目录呢？注意，sys.path.append(&quot;..&quot;) 表示将当前程序所在位置向上提了一级，之后就能调用 utils 的模块了。</p>
+<h3 id="2类方法实例方法静态方法的作用和区别">2.类方法，实例方法，静态方法的作用和区别</h3>
+<h4 id="实例方法">实例方法</h4>
+<p>定义：第一个参数必须是<strong>实例对象</strong>，该参数名一般约定为“self”，通过它来传递实例的属性和方法（也可以传类的属性和方法）。<br>
+调用：只能由<strong>实例对象</strong>调用。</p>
+<h4 id="类方法">类方法</h4>
+<p>定义：使用装饰器@classmethod。第一个参数必须是<strong>当前类对象</strong>，该参数名一般约定为“cls”，通过它来传递类的属性和方法（不能传实例的属性和方法）；<br>
+调用：<strong>实例对象和类对象</strong>都可以调用。<br>
+举例：<br>
+假设我有一个学生类和一个班级类，想要实现的功能为：<br>
+执行班级人数增加的操作、获得班级的总人数；<br>
+学生类继承自班级类，每实例化一个学生，班级人数都能增加；<br>
+最后，我想定义一些学生，获得班级中的总人数。</p>
+<pre><code>class ClassTest(object):
+    __num = 0
+
+    @classmethod
+    def addNum(cls):
+        cls.__num += 1
+
+    @classmethod
+    def getNum(cls):
+        return cls.__num
+
+    # 这里我用到魔术函数__new__，主要是为了在创建实例的时候调用人数累加的函数。
+    def __new__(self):
+        ClassTest.addNum()
+        return super(ClassTest, self).__new__(self)
+
+
+class Student(ClassTest):
+    def __init__(self):
+        self.name = ''
+
+a = Student()
+b = Student()
+print(ClassTest.getNum())
+</code></pre>
+<h4 id="静态方法">静态方法</h4>
+<p>定义：使用装饰器@staticmethod。参数随意，没有“self”和“cls”参数，但是方法体中不能使用类或实例的任何属性和方法；在静态方法中，不会涉及到类中的属性和方法的操作。可以理解为，静态方法是个独立的、单纯的函数，它仅仅托管于某个类的名称空间中，便于使用和维护。<br>
+调用：实例对象和类对象都可以调用。<br>
+举例：<br>
+定义一个关于时间操作的类，其中有一个获取当前时间的函数。</p>
+<pre><code>import time
+
+class TimeTest(object):
+   def __init__(self, hour, minute, second):
+       self.hour = hour
+       self.minute = minute
+       self.second = second
+
+   @staticmethod
+   def showTime():
+       return time.strftime(&quot;%H:%M:%S&quot;, time.localtime())
+
+
+print(TimeTest.showTime())
+t = TimeTest(2, 10, 10)
+nowTime = t.showTime()
+print(nowTime)
+</code></pre>
+<h3 id="3python对象的比较与拷贝">3.python对象的比较与拷贝</h3>
+<p>等于（<mark>）和 is 是 Python 中对象比较常用的两种方式。简单来说，'</mark>'操作符比较对象之间的值是否相等，比如下面的例子，表示比较变量 a 和 b 所指向的值是否相等。<br>
+不过，需要注意，对于整型数字来说，以上a is b为 True 的结论，只适用于 -5 到 256 范围内的数字。<br>
+<strong>浅拷贝</strong>，是指重新分配一块内存，创建一个新的对象，里面的元素是原对象中子对象的引用。因此，如果原对象中的元素不可变，那倒无所谓；但如果元素可变，浅拷贝通常会带来一些副作用，尤其需要注意。<br>
+这个例子中，我们首先初始化了一个列表 l1，里面的元素是一个列表和一个元组；然后对 l1 执行浅拷贝，赋予 l2。因为浅拷贝里的元素是对原对象元素的引用，因此 l2 中的元素和 l1 指向同一个列表和元组对象。接着往下看。l1.append(100)，表示对 l1 的列表新增元素 100。这个操作不会对 l2 产生任何影响，因为 l2 和 l1 作为整体是两个不同的对象，并不共享内存地址。操作过后 l2 不变，l1 会发生改变。再来看，l1[0].append(3)，这里表示对 l1 中的第一个列表新增元素 3。因为 l2 是 l1 的浅拷贝，l2 中的第一个元素和 l1 中的第一个元素，共同指向同一个列表，因此 l2 中的第一个列表也会相对应的新增元素 3。操作后 l1 和 l2 都会改变。<br>
+<strong>深度拷贝</strong>，是指重新分配一块内存，创建一个新的对象，并且将原对象中的元素，以递归的方式，通过创建新的子对象拷贝到新对象中。因此，新对象和原对象没有任何关联。我们可以看到，无论 l1 如何变化，l2 都不变。因为此时的 l1 和 l2 完全独立，没有任何联系。</p>
+<p>由此可见，在 Python 中：变量的赋值，只是表示让变量指向了某个对象，并不表示拷贝对象给变量；而一个对象，可以被多个变量所指向。可变对象（列表，字典，集合等等）的改变，会影响所有指向该对象的变量。对于不可变对象（字符串、整型、元组等等），所有指向该对象的变量的值总是一样的，也不会改变。但是通过某些操作（+= 等等）更新不可变对象的值时，会返回一个新的对象。变量可以被删除，但是对象无法被删除。</p>
+<p>准确地说，Python 的参数传递是赋值传递 （pass by assignment），或者叫作对象的引用传递（pass by object reference）。Python 里所有的数据类型都是对象，所以参数传递时，只是让新变量与原变量指向相同的对象而已，并不存在值传递或是引用传递一说。</p>
+<h3 id="4深入理解迭代器和生成器">4.深入理解迭代器和生成器</h3>
+<p>在 Python 中一切皆对象，对象的抽象就是类，而对象的集合就是容器。列表（list: [0, 1, 2]），元组（tuple: (0, 1, 2)），字典（dict: {0:0, 1:1, 2:2}），集合（set: set([0, 1, 2])）都是容器。对于容器，你可以很直观地想象成多个元素在一起的单元；而不同容器的区别，正是在于内部数据结构的实现方法。然后，你就可以针对不同场景，选择不同时间和空间复杂度的容器。<br>
+所有的容器都是可迭代的（iterable）。而可迭代对象，通过 iter() 函数返回一个迭代器，再通过 next() 函数就可以实现遍历。for in 语句将这个过程隐式化。<br>
+生成器是懒人版本的迭代器。</p>
+<h3 id="5并发编程">5.并发编程</h3>
+<p>协程是实现并发编程的一种方式。</p>
+<pre><code>
+import asyncio
+
+async def crawl_page(url):
+    print('crawling {}'.format(url))
+    sleep_time = int(url.split('_')[-1])
+    await asyncio.sleep(sleep_time)
+    print('OK {}'.format(url))
+
+async def main(urls):
+    for url in urls:
+        await crawl_page(url)
+
+%time asyncio.run(main(['url_1', 'url_2', 'url_3', 'url_4']))
+
+########## 输出 ##########
+
+crawling url_1
+OK url_1
+crawling url_2
+OK url_2
+crawling url_3
+OK url_3
+crawling url_4
+OK url_4
+Wall time: 10 s
+</code></pre>
+<p>首先来看 import asyncio，这个库包含了大部分我们实现协程所需的魔法工具。async 修饰词声明异步函数，于是，这里的 crawl_page 和 main 都变成了异步函数。而调用异步函数，我们便可得到一个协程对象（coroutine object）。<br>
+首先你要辨别一个误区，在 Python 中，并发并不是指同一时刻有多个操作（thread、task）同时进行。相反，某个特定的时刻，它只允许有一个操作发生，只不过线程 / 任务之间会互相切换，直到完成。<br>
+对比来看，并发通常应用于 I/O 操作频繁的场景，比如你要从网站上下载多个文件，I/O 操作的时间可能会比 CPU 运行处理的时间长得多。并行则更多应用于 CPU heavy 的场景，比如 MapReduce 中的并行计算，为了加快运行速度，一般会用多台机器、多个处理器来完成。</p>
+<ul>
+<li>同一时刻，Python 主程序只允许有一个线程执行，所以 Python 的并发，是通过多线程的切换完成的。</li>
+<li>如果是 I/O bound，并且 I/O 操作很慢，需要很多任务 / 线程协同实现，那么使用 Asyncio 更合适。</li>
+<li>如果是 I/O bound，但是 I/O 操作很快，只需要有限数量的任务 / 线程，那么使用多线程就可以了。如果是 CPU bound，则需要使用多进程来提高程序运行效率。</li>
+</ul>
+<p>CPython 使用引用计数来管理内存，所有 Python 脚本中创建的实例，都会有一个引用计数，来记录有多少个指针指向它。当引用计数只有 0 时，则会自动释放内存。所以说，CPython  引进 GIL 其实主要就是这么两个原因：一是设计者为了规避类似于内存管理这样的复杂的竞争风险问题（race condition）；二是因为 CPython 大量使用 C 语言库，但大部分 C 语言库都不是原生线程安全的（线程安全会降低性能和增加复杂度）。<br>
+CPython 中还有另一个机制，叫做 check_interval，意思是 CPython 解释器会去轮询检查线程 GIL 的锁住情况。每隔一段时间，Python 解释器就会强制当前线程去释放 GIL，这样别的线程才能有执行的机会。<br>
+如果你的应用真的对性能有超级严格的要求，比如 100us 就对你的应用有很大影响，那我必须要说，Python 可能不是你的最优选择。当然，可以理解的是，我们难以避免的有时候就是想临时给自己松松绑，摆脱 GIL，比如在深度学习应用里，大部分代码就都是 Python 的。在实际工作中，如果我们想实现一个自定义的微分算子，或者是一个特定硬件的加速器，那我们就不得不把这些关键性能（performance-critical）代码在 C++ 中实现（不再受 GIL 所限），然后再提供 Python 的调用接口。<br>
+总的来说，你只需要重点记住，绕过 GIL 的大致思路有这么两种就够了：绕过 CPython，使用 JPython（Java 实现的 Python 解释器）等别的实现；把关键性能代码，放到别的语言（一般是 C++）中实现。</p>
+<h3 id="6垃圾回收">6.垃圾回收</h3>
+<p>我们知道，Python 程序在运行的时候，需要在内存中开辟出一块空间，用于存放运行时产生的临时变量；计算完成后，再将结果输出到永久性存储器中。如果数据量过大，内存空间管理不善就很容易出现 OOM（out of memory），俗称爆内存，程序可能被操作系统中止。<br>
+而对于服务器，这种设计为永不中断的系统来说，内存管理则显得更为重要，不然很容易引发内存泄漏。什么是内存泄漏呢？这里的泄漏，并不是说你的内存出现了信息安全问题，被恶意程序利用了，而是指程序本身没有设计好，导致程序未能释放已不再使用的内存。内存泄漏也不是指你的内存在物理上消失了，而是意味着代码在分配了某段内存后，因为设计错误，失去了对这段内存的控制，从而造成了内存的浪费。<br>
+我们反复提过好几次， Python 中一切皆对象。因此，你所看到的一切变量，本质上都是对象的一个指针。</p>
+<ul>
+<li>global a 表示将 a 声明为全局变量。那么，即使函数返回后，列表的引用依然存在，于是对象就不会被垃圾回收掉，依然占用大量内存。</li>
+<li>如果我们把生成的列表返回，然后在主程序中接收，那么引用依然存在，垃圾回收就不会被触发，大量内存仍然被占用着<br>
+Python 使用标记清除（mark-sweep）算法和分代收集（generational），来启用针对循环引用的自动垃圾回收。你可能不太熟悉这两个词，这里我简单介绍一下。先来看标记清除算法。我们先用图论来理解不可达的概念。对于一个有向图，如果从一个节点出发进行遍历，并标记其经过的所有节点；那么，在遍历结束后，所有没有被标记的节点，我们就称之为不可达节点。显而易见，这些节点的存在是没有任何意义的，自然的，我们就需要对它们进行垃圾回收。当然，每次都遍历全图，对于 Python 而言是一种巨大的性能浪费。所以，在 Python 的垃圾回收实现中，mark-sweep 使用双向链表维护了一个数据结构，并且只考虑容器类的对象（只有容器类对象才有可能产生循环引用）。具体算法这里我就不再多讲了，毕竟我们的重点是关注应用。而分代收集算法，则是另一个优化手段。Python 将所有对象分为三代。刚刚创立的对象是第 0 代；经过一次垃圾回收后，依然存在的对象，便会依次从上一代挪到下一代。而每一代启动自动垃圾回收的阈值，则是可以单独指定的。当垃圾回收器中新增对象减去删除对象达到相应的阈值时，就会对这一代对象启动垃圾回收。事实上，分代收集基于的思想是，新生的对象更有可能被垃圾回收，而存活更久的对象也有更高的概率继续存活。因此，通过这种做法，可以节约不少计算量，从而提高 Python 的性能。学了这么多，刚刚面试官的问题，你应该能回答得上来了吧！没错，引用计数是其中最简单的实现，不过切记，引用计数并非充要条件，它只能算作充分非必要条件；至于其他的可能性，我们所讲的循环引用正是其中一种。<br>
+objgraph，一个非常好用的可视化引用关系的包。在这个包中，我主要推荐两个函数，第一个是 show_refs()，它可以生成清晰的引用关系图。通过下面这段代码和生成的引用调用图，你能非常直观地发现，有两个 list 互相引用，说明这里极有可能引起内存泄露。这样一来，再去代码层排查就容易多了。<br>
+objgraph.show_refs([a])<br>
+objgraph.show_backrefs([a])</li>
+</ul>
+<h3 id="7python多进程实战">7.python多进程实战</h3>
+<p>创建进程的类：Process<br>
+Process(group, target , name , args , kwargs)，由该类实例化得到的对象，表示一个子进程中的任务（尚未启动）</p>
+<ol>
+<li>group参数未使用，值始终为None</li>
+<li>target表示调用对象，即子进程要执行的任务</li>
+<li>args表示调用对象的位置参数元组，args=(1,2,'anne',)</li>
+<li>kwargs表示调用对象的字典,kwargs={'name':'anne','age':18}</li>
+<li>name为子进程的名称</li>
+</ol>
+<p><strong>创建并开启进程的两种方法</strong></p>
+<ul>
+<li>直接调用</li>
+</ul>
+<pre><code>#方法一 直接调用import time
+import random
+from multiprocessing import Process
+def run(name):
+    print('%s runing' %name)
+    time.sleep(random.randrange(1,5))
+    print('%s running end' %name)
+
+
+
+p1=Process(target=run,args=('anne',)) #必须加,号 
+p2=Process(target=run,args=('alice',))
+p3=Process(target=run,args=('biantai',))
+p4=Process(target=run,args=('haha',))
+
+p1.start()
+p2.start()
+p3.start()
+p4.start()
+print('主线程')
+</code></pre>
+<ul>
+<li>继承式调用</li>
+</ul>
+<pre><code>import time
+import random
+from multiprocessing import Process
+
+
+class Run(Process):
+    def __init__(self,name):
+        super().__init__()
+        self.name=name
+    def run(self):
+        print('%s runing' %self.name)
+        time.sleep(random.randrange(1,5))
+        print('%s runing end' %self.name)
+
+p1=Run('anne')
+p2=Run('alex')
+p3=Run('ab')
+p4=Run('hey')
+p1.start() #start会自动调用run
+p2.start()
+p3.start()
+p4.start()
+print('主线程')
+</code></pre>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://currydai.com/post/ji-qi-xue-xi-shen-jing-wang-luo-yu-shen-du-xue-xi-qiu-xi-peng/">
+                  <h3 class="post-title">
+                    【机器学习】神经网络与深度学习-邱锡鹏
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'e9e2094cbb62d2e4fdf8',
+        clientSecret: 'e5f1fea8e3bc04931ca74fe4afd2051bc907e2b0',
+        repo: 'blog-comments',
+        owner: 'currydai',
+        admin: ['currydai'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

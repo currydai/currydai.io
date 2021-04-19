@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>【ML实践】如何一步步提升识别手写数字的精度？ | Currydai</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://currydai.com/favicon.ico?v=1618845862048">
+<link rel="stylesheet" href="https://currydai.com/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="1.项目介绍
+数字识别的概念是光学字符识别（OCR）的子概念，而光学字符识别起源于电报技术和为盲人创建阅读设备的技术。研究初期，识别的文字对象仅为0-9的数字，直至1965至1970年之间开始有一些简单的产品，数字识别技术开始被应用在邮编识..." />
+    <meta name="keywords" content="Machine" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://currydai.com">
+        <img src="https://currydai.com/images/avatar.png?v=1618845862048" class="site-logo">
+        <h1 class="site-title">Currydai</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            Home
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            Table of Contents
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            Classification label
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            About me
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="http://currydai@github.com/" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://twitter.com/daihb30" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://weibo.com/u/5951669823" target="_blank">
+            <i class="fab fa-weibo"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://www.zhihu.com/people/ka-li-35-76" target="_blank">
+            <i class="fab fa-zhihu"></i>
+          </a>
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Share interesting things
+    </div>
+    <div class="site-footer">
+      Powered by <a href="http://currydai@github.com/" target="_blank">Currydai</a> | <a class="rss" href="https://currydai.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">【ML实践】如何一步步提升识别手写数字的精度？</h2>
+            <div class="post-date">2021-02-03</div>
+            
+            <div class="post-content" v-pre>
+              <h2 id="1项目介绍">1.项目介绍</h2>
+<p>数字识别的概念是光学字符识别（OCR）的子概念，而光学字符识别起源于电报技术和为盲人创建阅读设备的技术。研究初期，识别的文字对象仅为0-9的数字，直至1965至1970年之间开始有一些简单的产品，数字识别技术开始被应用在邮编识别等工作场景中。1985年，Shildhar和Badreldin提出了能够准确识别手写数字的算法，他们使用拓扑特征，并结合语法分类器以高精度识别手写数字。1989年，Yann LeCun等人在贝尔实验室将使用反向传播算法训练的卷积神经网络结合到读取“手写”数字上，并成功应用于识别美国邮政服务提供的手写邮政编码数字，成为了LeNet系列卷积网络的雏形。同年，Yann LeCun在发表的另一篇论文中描述了一个小的手写数字识别问题，并且表明即使该问题是线性可分的，单层网络也表现出较差的泛化能力。而当在多层的、有约束的网络上使用有位移不变性的特征检测器（shift invariant feature detectors）时，该模型可以在此任务上表现得非常好。1990年他们发表的论文再次描述了反向传播网络在手写数字识别中的应用，他们仅对数据进行了最小限度的预处理，而模型则是针对这项任务精心设计的，并且对其进行了高度约束。输入数据由图像组成，每张图像上包含一个数字，在美国邮政服务提供的邮政编码数字数据上的测试结果显示该模型的错误率仅有1%，拒绝率约为9%。<br>
+1994年，Yann LeCun，Leon Bottou等人比较了几个分类算法在手写数字标准数据库上的性能，该比较同时考虑了准确率、训练时间、识别时间等。1998年，Yann LeCun，Leon Bottou，Yoshua Bengio和Patrick Haffner等人再次发表论文，回顾了应用于手写字符识别的各种方法，并用标准手写数字识别基准任务对这些模型进行了比较，结果显示卷积神经网络的表现超过了其他所有模型。该研究获得了巨大的成功，从那时起，神经网络及他们使用的MNIST数据集成为了手写数字识别的流行算法和验证算法的基本数据集。<br>
+当然，神经网络并不是识别手写数字的唯一算法。早于1997年，Scholkopf等人就使用支持向量机在（SVＭ）美国手写数字邮政服务数据库上进行了测试，测试的模型有使用RBF内核的SVM、高斯核函数的SVM和由SVＭ方法确定的中心和由误差反向传播训练的权重的混合系统，结果显示支持向量机在当时的模型中实现了最高的精度。<br>
+（手写）数字识别目前已成为人工智能领域及计算机视觉领域的基本问题，大量的识别算法涌现，近几年来在MNIST数据集上，其识别准确率更是高达99%。<br>
+MNIST手写数字数据集来源于是美国国家标准与技术研究所，是著名的公开数据集之一，通常这个数据集都会被作为深度学习的入门案例。数据集中的数字图片是由250个不同职业的人纯手写绘制，数据集获取的网址为：http://yann.lecun.com/exdb/mnist/。<br>
+具体来看，MNIST手写数字数据集包含有60000张图片作为训练集数据，10000张图片作为测试集数据，且每一个训练元素都是28*28像素的手写数字图片，每一张图片代表的是从0到9中的每个数字。<br>
+<img src="https://currydai.com/post-images/1612880529161.png" alt="" loading="lazy"></p>
+<h2 id="2数据预处理">2.数据预处理</h2>
+<p>如果我们把每一张图片中的像素转换为向量，则得到长度为28*28=784的向量。因此我们可以把MNIST数据训练集看作是一个[60000,784]的张量，第一个维度表示图片的索引，第二个维度表示每张图片中的像素点。而图片里的每个像素点的值介于0-255之间。<br>
+此外，MNIST数据集的类标是介于0-9的数字，共10个类别。通常我们要用独热编码（One_Hot Encoding）的形式表示这些类标。所谓的独热编码，直观的讲就是用N个维度来对N个类别进行编码，并且对于每个类别，只有一个维度有效，记作数字1 ；其它维度均记作数字0。例如类标1表示为：([0,1,0,0,0,0,0,0,0,0])；同理标签2表示为：([0,0,1,0,0,0,0,0,0,0])。最后我们通过softmax函数输出的是每张图片属于10个类别的概率。<br>
+原始数据数据以非常简单的文件格式存储，旨在存储矢量和多维矩阵。因此在使用前需要转换，其具体转换过程参考了网友的结果，再次表示感谢。<br>
+<img src="https://currydai.com/post-images/1612881662101.png" alt="" loading="lazy"></p>
+<pre><code>import numpy as np
+import struct
+from matplotlib import pyplot as plt
+import pandas as pd
+
+ ##解析idx3文件的通用函数
+def decode_idx3_ubyte(idx3_ubyte_file):
+    #读取二进制文件
+    bin_data = open(idx3_ubyte_file, 'rb').read()
+    
+    #解析文件信息
+    offset = 0
+    fmt_header = '&gt;iiii'
+    magic_number, num_images, num_rows, num_cols = struct.unpack_from(fmt_header, bin_data, offset)
+    #print('魔数:%d, 图片数量: %d张, 图片大小: %d*%d' % (magic_number, num_images, num_rows, num_cols))
+
+    #解析数据集
+    image_size = num_rows * num_cols
+    offset += struct.calcsize(fmt_header)
+    #print(offset)
+    fmt_image = '&gt;' + str(image_size) + 'B'
+    #print(fmt_image,offset,struct.calcsize(fmt_image))
+    images = np.empty((num_images, num_rows*num_cols,1))
+
+    for i in range(num_images):
+        #if (i + 1) % 10000 == 0:
+            #print('已解析 %d' % (i + 1) + '张')
+            #print(offset)
+        images[i] = np.array(struct.unpack_from(fmt_image, bin_data, offset)).reshape((num_cols*num_rows,1))
+        offset += struct.calcsize(fmt_image)
+
+    return images
+
+def decode_idx1_ubyte(idx1_ubyte_file):
+    &quot;&quot;&quot;
+    解析idx1文件的通用函数
+    :param idx1_ubyte_file: idx1文件路径
+    :return: 数据集
+    &quot;&quot;&quot;
+    # 读取二进制数据
+    bin_data = open(idx1_ubyte_file, 'rb').read()
+
+    # 解析文件头信息，依次为魔数和标签数
+    offset = 0
+    fmt_header = '&gt;ii'
+    magic_number, num_images = struct.unpack_from(fmt_header, bin_data, offset)
+    #print('魔数:%d, 图片数量: %d张' % (magic_number, num_images))
+
+    # 解析数据集
+    offset += struct.calcsize(fmt_header)
+    fmt_image = '&gt;B'
+    labels = np.empty(num_images)
+    for i in range(num_images):
+        #if (i + 1) % 10000 == 0:
+            #print ('已解析 %d' % (i + 1) + '张')
+        labels[i] = struct.unpack_from(fmt_image, bin_data, offset)[0]
+        offset += struct.calcsize(fmt_image)
+
+        
+    return labels
+
+def load_train_images(train_images_idx3_ubyte_file):
+    idx_ubyte_file=train_images_idx3_ubyte_file
+    return decode_idx3_ubyte(idx_ubyte_file)
+
+def load_train_labels(train_labels_idx1_ubyte_file):
+    idx_ubyte_file=train_labels_idx1_ubyte_file
+    return decode_idx1_ubyte(idx_ubyte_file)
+
+def load_test_images(test_images_idx3_ubyte_file):
+    idx_ubyte_file=test_images_idx3_ubyte_file
+    return decode_idx3_ubyte(idx_ubyte_file)
+
+def load_test_labels(test_labels_idx1_ubyte_file):
+    idx_ubyte_file=test_labels_idx1_ubyte_file
+    return decode_idx1_ubyte(idx_ubyte_file)
+
+if __name__=='__main__':
+    
+    def vectorized_result(j):
+        e = np.zeros((10, 1))
+        e[int(j)] = 1.0
+        return e
+
+    train_images_idx3_ubyte_file = 'D:/git_lab/game/minst/MNIST_Play/1_MNIST/1_MNIST/train-images-idx3-ubyte'
+    train_labels_idx1_ubyte_file = 'D:/git_lab/game/minst/MNIST_Play/1_MNIST/1_MNIST/train-labels-idx1-ubyte'
+    test_images_idx3_ubyte_file = 'D:/git_lab/game/minst/MNIST_Play/1_MNIST/1_MNIST/t10k-images-idx3-ubyte'
+    test_labels_idx1_ubyte_file = 'D:/git_lab/game/minst/MNIST_Play/1_MNIST/1_MNIST/t10k-labels-idx1-ubyte'
+    
+    
+    
+    train_images = pp.load_train_images(train_images_idx3_ubyte_file)
+    train_labels = [vectorized_result(i) for i in pp.load_train_labels(train_labels_idx1_ubyte_file)]
+    
+    test_images = pp.load_test_images(test_images_idx3_ubyte_file)
+    test_labels = pp.load_test_labels(test_labels_idx1_ubyte_file)
+    
+    
+    
+    training_data=list(zip(train_images,train_labels))
+    test_data=list(zip(test_images,test_labels))
+</code></pre>
+<h2 id="3网络架构">3.网络架构</h2>
+<h3 id="31-手动实现bp神经网络">3.1 手动实现BP神经网络</h3>
+<p>参照《神经网络与深度学习》一书，利用BP神经网络的基本性质结合python实现了网络框架，具体就是设置三层网络，包括784的输入，30-n的隐藏层以及10个输出层，利用梯度下降以及反向传播算法实现参数自动更新。<br>
+<img src="https://currydai.com/post-images/1612882031758.png" alt="" loading="lazy"></p>
+<pre><code>import numpy as np
+import random
+import struct
+import process_pic as pp
+import matplotlib.pyplot as plt
+
+class Network():
+    
+    def __init__(self,sizes):
+        self.num_layers=len(sizes)
+        self.sizes=sizes
+        self.biases=[np.random.randn(y,1) for y in sizes[1:]]
+        self.weights=[np.random.randn(y,x) for x, y in zip(sizes[:-1], sizes[1:])]
+        
+    def feedforward(self,a):
+        for b,w in zip(self.biases,self.weights):
+            a=self.sigmoid(np.dot(w,a)+b)
+        return a
+        
+    def SGD(self,training_data,epochs,mini_batch_size,eta,test_data):
+        if(test_data):
+            n_test=len(test_data)
+        n=len(training_data)
+        plt.ion()
+        for j in range(epochs):
+            random.shuffle(training_data)
+            mini_batchs=[training_data[k:k+mini_batch_size]  for k in range(0,n,mini_batch_size)]
+            for mini_batch in mini_batchs:
+                self.update_mini_batch(mini_batch,eta)
+            if test_data:
+                print('Epoch %s:%s/%s'%(j,self.evaluate(test_data),n_test))
+                #plt.grid(linestyle='-.')
+                plt.title(&quot;accuracy=%s&quot;%(self.evaluate(test_data)/n_test))
+                plt.xlabel(&quot;epoch&quot;)
+                plt.ylabel(&quot;accuracy&quot;)
+                plt.xlim(0,epochs)
+                plt.ylim(0,1) 
+                plt.scatter(j, self.evaluate(test_data)/n_test)
+                plt.pause(0.5)
+            else:
+                print('Epoch %s complete'%j)
+        plt.ioff()
+        plt.show()
+                
+    def update_mini_batch(self,mini_batch,eta):
+        nabla_b = [np.zeros(b.shape) for b in self.biases]
+        nabla_w = [np.zeros(w.shape) for w in self.weights]
+        for x, y in mini_batch:
+            delta_nabla_b, delta_nabla_w = self.backprop(x, y)
+            nabla_b = [nb+dnb for nb, dnb in zip(nabla_b, delta_nabla_b)]
+            nabla_w = [nw+dnw for nw, dnw in zip(nabla_w, delta_nabla_w)]
+        self.weights = [w-(eta/len(mini_batch))*nw for w, nw in zip(self.weights, nabla_w)]
+        self.biases = [b-(eta/len(mini_batch))*nb for b, nb in zip(self.biases, nabla_b)]
+    
+    def backprop(self, x, y):
+       nabla_b = [np.zeros(b.shape) for b in self.biases]
+       nabla_w = [np.zeros(w.shape) for w in self.weights]
+       activation = x
+       activations = [x] 
+       zs = []
+       for b, w in zip(self.biases, self.weights):
+           z = np.dot(w, activation)+b
+           zs.append(z)
+           activation = self.sigmoid(z)
+           activations.append(activation)
+       delta = self.cost_derivative(activations[-1], y) * self.sigmoid_prime(zs[-1])
+       nabla_b[-1] = delta
+       nabla_w[-1] = np.dot(delta, activations[-2].transpose())
+       for l in range(2, self.num_layers):
+           z = zs[-l]
+           sp = self.sigmoid_prime(z)
+           delta = np.dot(self.weights[-l+1].transpose(), delta) * sp
+           nabla_b[-l] = delta
+           nabla_w[-l] = np.dot(delta, activations[-l-1].transpose())
+       return (nabla_b, nabla_w)
+   
+    #返回神经网络为其输出正确结果的测试输入的数量。请注意，神经网络的输出被假定为最后一层中激活程度最高的任何神经元的索引
+    def evaluate(self,test_data):
+        test_results = [(np.argmax(self.feedforward(x)), y) for (x, y) in test_data]#最大值的索引
+        #print(test_results)
+        
+        return sum(int(x == y) for (x, y) in test_results)
+    
+    def cost_derivative(self, output_activations, y):
+        return (output_activations-y)
+    
+    def sigmoid(self,z):
+        return 1.0/(1.0+np.exp(-z))
+    
+    def sigmoid_prime(self,z):
+        return (self.sigmoid(z))*(1-self.sigmoid(z))
+    
+    
+if __name__=='__main__':
+    
+    def vectorized_result(j):
+        e = np.zeros((10, 1))
+        e[int(j)] = 1.0
+        return e
+
+    train_images_idx3_ubyte_file = 'D:/git_lab/game/minst/MNIST_Play/1_MNIST/1_MNIST/train-images-idx3-ubyte'
+    train_labels_idx1_ubyte_file = 'D:/git_lab/game/minst/MNIST_Play/1_MNIST/1_MNIST/train-labels-idx1-ubyte'
+    test_images_idx3_ubyte_file = 'D:/git_lab/game/minst/MNIST_Play/1_MNIST/1_MNIST/t10k-images-idx3-ubyte'
+    test_labels_idx1_ubyte_file = 'D:/git_lab/game/minst/MNIST_Play/1_MNIST/1_MNIST/t10k-labels-idx1-ubyte'
+    
+    
+    
+    train_images = pp.load_train_images(train_images_idx3_ubyte_file)
+    train_labels = [vectorized_result(i) for i in pp.load_train_labels(train_labels_idx1_ubyte_file)]
+    
+    test_images = pp.load_test_images(test_images_idx3_ubyte_file)
+    test_labels = pp.load_test_labels(test_labels_idx1_ubyte_file)
+    
+    
+    
+    training_data=list(zip(train_images,train_labels))
+    test_data=list(zip(test_images,test_labels))
+    
+    
+    net = Network([784, 16, 10])    
+    net.SGD(training_data, 30, 1000, 1, test_data=test_data)
+    #training_data,epochs,mini_batch_size,eta
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://currydai.com/post-images/1612885074956.png" alt="" loading="lazy"></figure>
+<h2 id="4提升精度">4.提升精度</h2>
+<pre><code>
+
+#### Libraries
+# Standard library
+import json
+import random
+import sys
+import preprocess as pp
+# Third-party libraries
+import numpy as np
+
+
+#### 定义二次代价函数与交叉熵函数
+
+class QuadraticCost(object):
+    
+
+    @staticmethod
+    def fn(a, y):
+        return 0.5*np.linalg.norm(a-y)**2
+
+    @staticmethod
+    def delta(z, a, y):
+        network2=Network([1,1,1],None)
+        return (a-y) * network2.sigmoid_prime(z)
+
+
+class CrossEntropyCost(object):
+
+    @staticmethod
+    def fn(a, y):
+        return np.sum(np.nan_to_num(-y*np.log(a)-(1-y)*np.log(1-a)))
+
+    @staticmethod
+    def delta(z, a, y):
+        return (a-y)
+
+
+#### 定义BP神经网络架构
+class Network(object):
+
+    def __init__(self, sizes, cost=CrossEntropyCost):
+        self.num_layers = len(sizes)
+        self.sizes = sizes
+        self.default_weight_initializer()
+        self.cost=cost
+
+    def default_weight_initializer(self):
+        self.biases = [np.random.randn(y, 1) for y in self.sizes[1:]]
+        self.weights = [np.random.randn(y, x)/np.sqrt(x) for x, y in zip(self.sizes[:-1], self.sizes[1:])]
+
+    def large_weight_initializer(self):
+        self.biases = [np.random.randn(y, 1) for y in self.sizes[1:]]
+        self.weights = [np.random.randn(y, x)  for x, y in zip(self.sizes[:-1], self.sizes[1:])]
+
+    def feedforward(self, a):
+        for b, w in zip(self.biases, self.weights):
+            a = self.sigmoid(np.dot(w, a)+b)
+        return a
+
+    def SGD(self, training_data, epochs, mini_batch_size, eta,
+            lmbda = 0.0,
+            evaluation_data=None,
+            monitor_evaluation_cost=False,
+            monitor_evaluation_accuracy=False,
+            monitor_training_cost=False,
+            monitor_training_accuracy=False):
+
+        if evaluation_data: 
+            n_data = len(evaluation_data)
+        n = len(training_data)
+        evaluation_cost, evaluation_accuracy = [], []
+        training_cost, training_accuracy = [], []
+        for j in range(epochs):
+            random.shuffle(training_data)
+            mini_batches = [training_data[k:k+mini_batch_size] for k in range(0, n, mini_batch_size)]
+            for mini_batch in mini_batches:
+                self.update_mini_batch(mini_batch, eta, lmbda, len(training_data))
+            print (&quot;Epoch %s training complete&quot; % j)
+            if monitor_training_cost:
+                cost = self.total_cost(training_data, lmbda)
+                training_cost.append(cost)
+                print (&quot;Cost on training data: {}&quot;.format(cost))
+            if monitor_training_accuracy:
+                accuracy = self.accuracy(training_data, convert=True)
+                training_accuracy.append(accuracy)
+                print (&quot;Accuracy on training data: {} / {}&quot;.format(accuracy, n))
+            if monitor_evaluation_cost:
+                cost = self.total_cost(evaluation_data, lmbda, convert=True)
+                evaluation_cost.append(cost)
+                print (&quot;Cost on evaluation data: {}&quot;.format(cost))
+            if monitor_evaluation_accuracy:
+                accuracy = self.accuracy(evaluation_data)
+                evaluation_accuracy.append(accuracy)
+                print (&quot;Accuracy on evaluation data: {} / {}&quot;.format(self.accuracy(evaluation_data), n_data))
+        return evaluation_cost, evaluation_accuracy,training_cost, training_accuracy
+
+    def update_mini_batch(self, mini_batch, eta, lmbda, n):
+        nabla_b = [np.zeros(b.shape) for b in self.biases]
+        nabla_w = [np.zeros(w.shape) for w in self.weights]
+        for x, y in mini_batch:
+            delta_nabla_b, delta_nabla_w = self.backprop(x, y)
+            nabla_b = [nb+dnb for nb, dnb in zip(nabla_b, delta_nabla_b)]
+            nabla_w = [nw+dnw for nw, dnw in zip(nabla_w, delta_nabla_w)]
+        self.weights = [(1-eta*(lmbda/n))*w-(eta/len(mini_batch))*nw for w, nw in zip(self.weights, nabla_w)]
+        self.biases = [b-(eta/len(mini_batch))*nb for b, nb in zip(self.biases, nabla_b)]
+
+    def backprop(self, x, y):
+        nabla_b = [np.zeros(b.shape) for b in self.biases]
+        nabla_w = [np.zeros(w.shape) for w in self.weights]
+        # feedforward
+        activation = x
+        activations = [x] # list to store all the activations, layer by layer
+        zs = [] # list to store all the z vectors, layer by layer
+        for b, w in zip(self.biases, self.weights):
+            z = np.dot(w, activation)+b
+            zs.append(z)
+            activation = self.sigmoid(z)
+            activations.append(activation)
+        # backward pass
+        delta = (self.cost).delta(zs[-1], activations[-1], y)
+        nabla_b[-1] = delta
+        nabla_w[-1] = np.dot(delta, activations[-2].transpose())
+        for l in range(2, self.num_layers):
+            z = zs[-l]
+            sp = self.sigmoid_prime(z)
+            delta = np.dot(self.weights[-l+1].transpose(), delta) * sp
+            nabla_b[-l] = delta
+            nabla_w[-l] = np.dot(delta, activations[-l-1].transpose())
+        return (nabla_b, nabla_w)
+
+    def accuracy(self, data, convert=False):
+        if convert:
+            results = [(np.argmax(self.feedforward(x)), np.argmax(y))  for (x, y) in data]
+        else:
+            results = [(np.argmax(self.feedforward(x)), y) for (x, y) in data]
+        return sum(int(x == y) for (x, y) in results)
+
+    def total_cost(self, data, lmbda, convert=False):
+        cost = 0.0
+        for x, y in data:
+            a = self.feedforward(x)
+            if convert: 
+                y = vectorized_result(y)
+            cost += self.cost.fn(a, y)/len(data)
+        cost += 0.5*(lmbda/len(data))*sum(np.linalg.norm(w)**2 for w in self.weights)
+        return cost
+    
+
+    def sigmoid(self,z):
+        return 1.0/(1.0+np.exp(-z))
+    
+
+    def sigmoid_prime(self,z):
+        return self.sigmoid(z)*(1-self.sigmoid(z))
+    
+if __name__=='__main__':
+    
+    def vectorized_result(j):
+        e = np.zeros((10, 1))
+        e[int(j)] = 1.0
+        return e
+    
+    train_images_idx3_ubyte_file = 'D:/git_lab/game/minst/MNIST_Play/1_MNIST/1_MNIST/train-images-idx3-ubyte'
+    train_labels_idx1_ubyte_file = 'D:/git_lab/game/minst/MNIST_Play/1_MNIST/1_MNIST/train-labels-idx1-ubyte'
+    test_images_idx3_ubyte_file = 'D:/git_lab/game/minst/MNIST_Play/1_MNIST/1_MNIST/t10k-images-idx3-ubyte'
+    test_labels_idx1_ubyte_file = 'D:/git_lab/game/minst/MNIST_Play/1_MNIST/1_MNIST/t10k-labels-idx1-ubyte'
+    
+    
+    
+    train_images = pp.load_train_images(train_images_idx3_ubyte_file)
+    train_labels = [vectorized_result(i) for i in pp.load_train_labels(train_labels_idx1_ubyte_file)]
+    
+    test_images = pp.load_test_images(test_images_idx3_ubyte_file)
+    test_labels = pp.load_test_labels(test_labels_idx1_ubyte_file)
+    
+    
+    
+    training_data=list(zip(train_images,train_labels))
+    test_data=list(zip(test_images,test_labels))
+    
+    net = Network([784, 30, 10], cost=CrossEntropyCost)
+    net.default_weight_initializer()
+    net.SGD(training_data, 30, 10, 0.5,  evaluation_data=test_data, lmbda = 0.1,monitor_evaluation_accuracy=True, monitor_training_cost=True)
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://currydai.com/post-images/1612945862780.png" alt="" loading="lazy"></figure>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://currydai.com/tag/machine/" class="tag">
+                    Machine
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://currydai.com/post/ji-qi-xue-xi-3zhuan-ti-shen-jing-wang-luo-yu-shen-du-xue-xi/">
+                  <h3 class="post-title">
+                    【机器学习】[3]从手写字母认识神经网络
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'e9e2094cbb62d2e4fdf8',
+        clientSecret: 'e5f1fea8e3bc04931ca74fe4afd2051bc907e2b0',
+        repo: 'blog-comments',
+        owner: 'currydai',
+        admin: ['currydai'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

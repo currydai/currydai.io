@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>【转载】[1]算法工程师学习路线 | Currydai</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://currydai.com/favicon.ico?v=1618845862048">
+<link rel="stylesheet" href="https://currydai.com/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="一、学习路线
+主要分为 4 个部分：数学基础、编程能力、算法基础、实战。
+https://github.com/Jack-Cherish/awesome-cs-books
+1、数学基础
+在机器学习算法中，涉及到最为重要的数学基本知识有两个：..." />
+    <meta name="keywords" content="Life" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://currydai.com">
+        <img src="https://currydai.com/images/avatar.png?v=1618845862048" class="site-logo">
+        <h1 class="site-title">Currydai</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            Home
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            Table of Contents
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            Classification label
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            About me
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="http://currydai@github.com/" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://twitter.com/daihb30" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://weibo.com/u/5951669823" target="_blank">
+            <i class="fab fa-weibo"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://www.zhihu.com/people/ka-li-35-76" target="_blank">
+            <i class="fab fa-zhihu"></i>
+          </a>
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Share interesting things
+    </div>
+    <div class="site-footer">
+      Powered by <a href="http://currydai@github.com/" target="_blank">Currydai</a> | <a class="rss" href="https://currydai.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">【转载】[1]算法工程师学习路线</h2>
+            <div class="post-date">2021-02-11</div>
+            
+            <div class="post-content" v-pre>
+              <h2 id="一-学习路线">一、学习路线</h2>
+<p>主要分为 4 个部分：<strong>数学基础、编程能力、算法基础、实战</strong>。<br>
+https://github.com/Jack-Cherish/awesome-cs-books</p>
+<h3 id="1-数学基础">1、数学基础</h3>
+<p>在机器学习算法中，涉及到最为重要的数学基本知识有两个：线性代数和概率论。</p>
+<p><strong>线性代数</strong>作为研究空间的一门科学，是入门机器学习的最要基础之一。<br>
+视频：推荐 MIT 的老教授 Gilbert Strang 的线性代数上课视频。<br>
+教材：推荐《线性代数及其应用》，作者是 David C. Lay 。PS：资源下载见文末。这本书详细地介绍了线性代数在几何学、计算机图形学、经济学、概率论、信号与系统、微分方程等领域的应用，给人以直观的认识。<br>
+<strong>概率论</strong>是研究不确定性的一门科学，生活处处是概率。机器学习算法需要对现实情况建模，自然是少不了将概率论作为工具。这里推荐陈希儒的《概率论与数理统计》，讲得很详细，如同听一个老者回忆自己的概率与统计心得，相信读者也会有所收获。</p>
+<h3 id="2-编程能力">2、编程能力</h3>
+<p>编程语言，需要至少掌握两门， Python 和 C++。</p>
+<ul>
+<li>
+<p><strong>Python</strong>主要用于处理数据、算法调研、模型训练的工作，而 C++ 则是负责工程落地。<br>
+算法工程师，需要针对落地场景，对算法的可靠性和实时性等方面进行优化，C++ 工程能力必不可少。</p>
+<p>视频：我上学看的第一个视频，就是小甲鱼 Python 课程，风趣幽默，涉及Python 语法基础、网络爬虫、Pygame 飞机大战等内容，内容很丰富。</p>
+<p>实战是最好的老师，学习 Python 的时候，可以找一个自己喜欢的方向，去实战。边实战，边学习。比如写爬虫、做小游戏、玩各种有趣的算法等。这里面，爬虫是最简单的，很容易有成就感，让你坚持学习下去，下载小说、下载漫画、下载音乐、下载电影、抢票等等小程序。<br>
+这个推荐我的一个 Github star 量 11.4k+、fork 4.5k+的爬虫项目。<br>
+每个实战，都有对应的文章教程，代码开源。<br>
+项目地址：https://github.com/Jack-Cherish/python-spider</p>
+<p>教材：推荐《流畅的Python》，书看完有些难度，但是哪来当个手册用，很方便，哪些语法忘记了，翻阅一番，必能有所收获。</p>
+</li>
+<li>
+<p>**C++**是一种面向对象的程序设计语言，无论你是做算法，还是做开发，亦或者是做测开。C++ 都应该掌握，它是一个基础的编程语言。学会了这门编程语言，再学其它，就会更得心应手。</p>
+<p>视频：这部分推荐慕课网的免费教程，很好的入门视频，老师讲得绘声绘色、形象生动、通熟易懂。<br>
+一共分为 7 章，每章视频的时间是 2-3 个小时，半个月可以轻松刷完，学习顺序是：<br>
+C++远征之起航篇<br>
+C++远征之离港篇<br>
+C++远征之封装篇（上）<br>
+C++远征之封装篇（下）<br>
+C++远征之继承篇<br>
+C++远征之多态篇<br>
+C++远征之模板篇</p>
+<p>教材：推荐被誉为“圣经”的《C++ Primer》，经典巨著，非常棒的书。PS：资源下载见文末。<br>
+编程语言基础学完了，接下来就是数据结构与算法。</p>
+</li>
+<li>
+<p><strong>数据结构与算法</strong>是程序员的内功，每一个工程师的必修课。数据结构的学法，我推荐是直接看书，一边学习一边刷题，同时进行，这样学的速度快。<br>
+《图解算法》就如同书名一样，这是一本像小说一样有趣的算法入门书，非常易懂，强烈推荐。<br>
+《剑指Offer》，里面讲解了 66 道+ 常见数据结构题，解析思路，简单易懂。<br>
+两门书一起看，轻松入门数据结构与算法。<br>
+不过《剑指Offer》讲解的代码都是 C/C++，没有 Python 版本，想看 Python 版本的，可以看我整理的教程，C++ 和 Python 都有实现和讲解，题目已按照类型划分好。<br>
+项目地址：https://github.com/Jack-Cherish/LeetCode<br>
+两本书都看完，题也刷完了，那就算是入门了。<br>
+《LeetCode》进阶<br>
+力扣可以从 HOT 100 或 精选算法 200 题刷起，题目相对于《剑指Offer》要增加一些难度，但每道题目都有对应的解题思路和答案。坚持刷完 200 道，大多的面试轻松搞定，完全够用。当然要面试谷歌级别的大佬，Hard 题是不能放过的。<br>
+刷题地址：https://leetcode-cn.com/<br>
+Tip：刷一遍题，回头看还会忘，不要怀疑自己，要反复刷，反复练习。<br>
+同时，推荐一份谷歌大佬的刷题笔记：<br>
+Jack-Cui：看完谷歌师兄的刷题笔记，多语言通吃，秒杀 88% Leetcode 题目</p>
+</li>
+</ul>
+<h3 id="3-算法基础">3、算法基础</h3>
+<p>恭喜大家，在做了前面这么多基础工作之后，终于可以开始入门机器学习算法了。</p>
+<p><strong>机器学习：</strong><br>
+视频：推荐吴恩达老师的机器学习视频，吴恩达是整个领域的巨头之一，学术地位很高。同时，他出的视频也对新手非常友好，入门的不二之选。<br>
+教材：还是那句话，光看不练是不行的。《机器学习实战》，理论结合实战，适合新手。<br>
+《机器学习实战》使用 Python2 实现，有些细节讲的不够细致，对此我进行了完善，使用 Python3 复现了一遍，并结合 sklearn 以及更多的好玩例子，进行讲解。<br>
+全网阅读量 500w+：<br>
+对应的 Github 开源代码 Star 3.3k+，fork 3.1k+。<br>
+在线阅读地址：<br>
+https://cuijiahua.com/blog/ml/</p>
+<p><strong>深度学习：</strong><br>
+深度学习是现在的算法工程师绕不开的一个子领域，是机器学习的子集。<br>
+视频：还是推荐吴恩达老师的深度学习视频，也是对新手非常友好。<br>
+教材：说实话，深度学习，我并没有看过书，都是视频+ Github 开源项目学习的，不过被誉为深度学习领域圣经的“花书”，可以备一本。PS：资源下载见文末。<br>
+深度学习框架：<br>
+深度学习框架有很多，Tensorflow、Pytorch、Paddle、MXNet、Caffe等。<br>
+我在工作过程中，用的最多的是 Pytorch，其次是 Tensorflow。<br>
+新手上手，推荐先学 Pytorch，可以直接看 Yunjey Choi 大佬的 Github 教程，简单入门：<br>
+项目地址：<br>
+https://github.com/yunjey/pytorch-tutorial<br>
+Pytorch 深度学习框架学习，也可以看我写的 Pytorch 深度学习实战系列教程，有垃圾分类、图像分割等结合实战的小项目。<br>
+Github 开源代码 Star 400+，fork 250+。<br>
+项目地址：<br>
+https://github.com/Jack-Cherish/Deep-Learning</p>
+<h3 id="4-实战">4、实战</h3>
+<p>实战实战，文章反复提到了这么多次，仅仅这些还是远远不够的。<br>
+因为更多时候，你是跟着视频 or 文章的思路去实战，这缺少了独立思考的过程。<br>
+学了这么多，你并没有独立完成过一个项目，数据怎么处理，怎么分析问题，用什么算法解决问题，也没有独立思考过。<br>
+算法工程师的岗位竞争也比较激烈的，为了在茫茫人海中脱颖而出，我们需要以团队或个人的形式，独立完成一些项目，只有这样，你才能更具竞争力。<br>
+对于学生党，做项目，最简单直接的方法就是参加竞赛。<br>
+推荐两个参加竞赛的地方，一个是国外的 Kaggle，另一个是国内的阿里云天池。<br>
+两个竞赛的奖金也都很丰富，根据自己的喜好，参赛即可。<br>
+Kaggle：https://www.kaggle.com/<br>
+阿里天池：https://tianchi.aliyun.com/competition/gameList/activeList<br>
+既能打比赛，又能赢奖金，何乐而不为呢？</p>
+<h2 id="三-资料打包">三、资料打包</h2>
+<p>本文提到的资料，我都整理好了有需要的自取（提取码：jack）：<br>
+链接：https://pan.baidu.com/s/12tbVrUF056pY7aCyMpgl1w</p>
+<h2 id="四-总结">四、总结</h2>
+<p>这篇文章整理的也是我的学习路线。<br>
+要说需要学多久，那就看个人的学习动力了。<br>
+如果你想去一家不错的公司，但是目前硬实力不过关，我觉得还是有必要去努力一下的，技术能力的高低决定你能走多远，平台的高低，决定你能飞多高。<br>
+如果可以通过自己的努力，进入自己心仪的公司，一定不要松懈怠慢，职场成长和学习新技术一样，不进则退<br>
+你往往会发现，身边实力越强的人越努力，最高级的自律就是享受孤独。<br>
+刷题的话，也可以看另外一个大佬的刷题笔记。<br>
+Jack-Cui：看完谷歌师兄的刷题笔记，多语言通吃，秒杀 88% Leetcode 题目<br>
+<img src="https://currydai.com/post-images/1613828474102.png" alt="" loading="lazy"></p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://currydai.com/tag/life/" class="tag">
+                    Life
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://currydai.com/post/tu-xiang-chu-li-opencv-jiao-cheng/">
+                  <h3 class="post-title">
+                    【图像处理】[2]opencv教程
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'e9e2094cbb62d2e4fdf8',
+        clientSecret: 'e5f1fea8e3bc04931ca74fe4afd2051bc907e2b0',
+        repo: 'blog-comments',
+        owner: 'currydai',
+        admin: ['currydai'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

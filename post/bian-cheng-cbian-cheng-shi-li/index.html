@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>【编程】C++编程实例 | Currydai</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://currydai.com/favicon.ico?v=1618845862048">
+<link rel="stylesheet" href="https://currydai.com/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="C++内容实在是太多，学完一遍又一遍总是晕头转向。回想起学python的过程中，由于项目压力逼迫自己边学边做，后来成长的特别快。因此在本文中，我会结合一些工作和学习中遇到的实例来练习C++的使用。
+1.读文件，改文件以及保存不同文件
+1.1..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://currydai.com">
+        <img src="https://currydai.com/images/avatar.png?v=1618845862048" class="site-logo">
+        <h1 class="site-title">Currydai</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            Home
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            Table of Contents
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            Classification label
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            About me
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="http://currydai@github.com/" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://twitter.com/daihb30" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://weibo.com/u/5951669823" target="_blank">
+            <i class="fab fa-weibo"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://www.zhihu.com/people/ka-li-35-76" target="_blank">
+            <i class="fab fa-zhihu"></i>
+          </a>
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Share interesting things
+    </div>
+    <div class="site-footer">
+      Powered by <a href="http://currydai@github.com/" target="_blank">Currydai</a> | <a class="rss" href="https://currydai.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">【编程】C++编程实例</h2>
+            <div class="post-date">2021-03-13</div>
+            
+            <div class="post-content" v-pre>
+              <p>C++内容实在是太多，学完一遍又一遍总是晕头转向。回想起学python的过程中，由于项目压力逼迫自己边学边做，后来成长的特别快。因此在本文中，我会结合一些工作和学习中遇到的实例来练习C++的使用。</p>
+<h2 id="1读文件改文件以及保存不同文件">1.读文件，改文件以及保存不同文件</h2>
+<h3 id="11-不同格式文件的读入和保存">1.1 不同格式文件的读入和保存</h3>
+<h4 id="基础知识">基础知识</h4>
+<p><strong>C++中的数据类型：</strong></p>
+<ul>
+<li>1字节：char</li>
+<li>2字节：short</li>
+<li>4字节：int float long</li>
+<li>8字节：double longlong<br>
+此外，4中整型都有一种不能储存负数值的无符号变体（unsigned），主要优点是增大变量的储存最大值。</li>
+</ul>
+<p><strong>重载的&lt;&lt; and &gt;&gt;运算符：</strong><br>
+对于上述的每一个数据类型，sotream都提供了operator()函数的定义(重载)</p>
+<p><strong>.txt格式文件读取</strong></p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;fstream&gt;
+#include&lt;string&gt;
+using namespace std;
+
+int main(int argc,char *argv[])
+{
+
+	cout &lt;&lt; &quot;argc&quot; &lt;&lt; &quot;:&quot;&lt;&lt;argc &lt;&lt; endl;
+	cout &lt;&lt; &quot;*argv&quot; &lt;&lt; &quot;:&quot; &lt;&lt; *argv &lt;&lt; endl;
+    //文件写操作
+	ofstream fout(&quot;test.txt&quot;);
+
+	string a = &quot;abc&quot;;
+	int b[2][2];
+	for (int i = 0; i &lt; 2; i++)
+	{
+		for (int j = 0; j &lt; 2; j++)
+		{
+			b[i][j] = i + j;
+			fout &lt;&lt; b[i][j];
+			fout &lt;&lt; &quot; &quot;;
+		}
+		fout &lt;&lt; '\n';
+	}
+	fout.close();
+	cout &lt;&lt; &quot;文件保存结束&quot; &lt;&lt; endl;
+
+
+	//文件读操作
+	ifstream fin(&quot;test.txt&quot;);
+	//char c;
+	//fin &gt;&gt; c;
+
+
+	string d;
+	while (getline(fin, d))
+	{
+		cout &lt;&lt; d &lt;&lt; endl;
+	}
+
+	cout &lt;&lt; &quot;文件读取结束&quot; &lt;&lt; endl;
+	fin.close();
+
+	return 0;
+}
+</code></pre>
+<p><strong>.csv格式文件读取</strong><br>
+和读txt文件相同</p>
+<h3 id="12-实例读取tdms格式文件并转化为txt">1.2 实例：读取tdms格式文件并转化为txt</h3>
+<p>实例比较难，还没有达到那个水平，希望回头等C++熟练了再做一次</p>
+<h2 id="2信号中的一些分析方法实现">2.信号中的一些分析方法实现</h2>
+<h3 id="21-傅里叶变换">2.1 傅里叶变换</h3>
+<h3 id="22-频谱分析">2.2 频谱分析</h3>
+<h3 id="22-功率谱分析">2.2 功率谱分析</h3>
+<h2 id="3信号中的常用滤波方法">3.信号中的常用滤波方法</h2>
+<h3 id="31-低通滤波">3.1 低通滤波</h3>
+<h3 id="32-高通滤波">3.2 高通滤波</h3>
+<h3 id="33-带通滤波">3.3 带通滤波</h3>
+<h3 id="34-卡尔曼滤波">3.4 卡尔曼滤波</h3>
+<h3 id="35-小波分析">3.5 小波分析</h3>
+<h2 id="4常用算法实现以及改进">4.常用算法实现以及改进</h2>
+<h3 id="41-粒子群优化算法">4.1 粒子群优化算法</h3>
+<h3 id="42-遗传算法">4.2 遗传算法</h3>
+<h2 id="5opencv基本操作">5.opencv基本操作</h2>
+<h2 id="6qt-gui开发">6.QT GUI开发</h2>
+<h3 id="61-数据处理软件">6.1 数据处理软件</h3>
+<h3 id="62-优秀开源软件">6.2 优秀开源软件</h3>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://currydai.com/post/bian-cheng-jian-zhi-offer-shua-ti-bi-ji/">
+                  <h3 class="post-title">
+                    【编程】剑指offer刷题笔记
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'e9e2094cbb62d2e4fdf8',
+        clientSecret: 'e5f1fea8e3bc04931ca74fe4afd2051bc907e2b0',
+        repo: 'blog-comments',
+        owner: 'currydai',
+        admin: ['currydai'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

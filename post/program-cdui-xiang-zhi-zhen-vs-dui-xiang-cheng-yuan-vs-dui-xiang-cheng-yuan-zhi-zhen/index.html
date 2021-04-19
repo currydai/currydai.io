@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>【编程】[C++]对象指针vs对象成员vs对象成员指针 | Currydai</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://currydai.com/favicon.ico?v=1618845862048">
+<link rel="stylesheet" href="https://currydai.com/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="1.背景知识介绍
+1.1 类与对象
+
+实例化对象的两种方法：在栈中实例化(自动释放内存)以及在堆中实例化(需要手动释放内存)，需要进一步掌握不同对象访问成员数据以及成员函数的方法
+构造函数重要意义：对类成员变量完成初始化赋值操作，对象有了空..." />
+    <meta name="keywords" content="Program" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://currydai.com">
+        <img src="https://currydai.com/images/avatar.png?v=1618845862048" class="site-logo">
+        <h1 class="site-title">Currydai</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            Home
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            Table of Contents
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            Classification label
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            About me
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="http://currydai@github.com/" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://twitter.com/daihb30" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://weibo.com/u/5951669823" target="_blank">
+            <i class="fab fa-weibo"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://www.zhihu.com/people/ka-li-35-76" target="_blank">
+            <i class="fab fa-zhihu"></i>
+          </a>
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Share interesting things
+    </div>
+    <div class="site-footer">
+      Powered by <a href="http://currydai@github.com/" target="_blank">Currydai</a> | <a class="rss" href="https://currydai.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">【编程】[C++]对象指针vs对象成员vs对象成员指针</h2>
+            <div class="post-date">2021-02-20</div>
+            
+            <div class="post-content" v-pre>
+              <h2 id="1背景知识介绍">1.背景知识介绍</h2>
+<h3 id="11-类与对象">1.1 类与对象</h3>
+<ul>
+<li>实例化对象的两种方法：在栈中实例化(自动释放内存)以及在堆中实例化(需要手动释放内存)，需要进一步掌握不同对象访问成员数据以及成员函数的方法</li>
+<li>构造函数重要意义：对类成员变量完成初始化赋值操作，对象有了空间和生命</li>
+<li>构造函数初始化两种方法：初始化成员列表以及在构造函数内部进行赋值完成，第一种在构造函数体内实现的“=”操作的本质是赋值（Assign）操作，而第二种才是真正的初始化（Initialization），在大部分情况下两者方法可以互用，但是在特殊情况不能互用。
+<ul>
+<li>const 成员变量只能用初始化列表来完成初始化，而不能在构造函数中被赋值</li>
+<li>如果类 B 中含有 A 类型的成员变量，而A类中又禁止了赋值操作，此时要想顺利完成B中成员变量的初始化，就必须采用初始化列表方式。<br>
+<strong>总之，在 Class 中成员变量初始化是一个不可或缺的步骤；在初始化成员变量时，出于对方法的通用性及高效性的考虑，强烈推荐采用成员变量初始化列表的方式初始化变量，并且要保证成员变量声明的顺序和初始化列表的顺序一致。</strong></li>
+</ul>
+</li>
+</ul>
+<pre><code>#include&lt;iostream&gt;
+using namespace std;
+
+class Coordinate
+{
+public:
+	Coordinate(int x, int y); //构造函数
+	~Coordinate(); //析构函数
+	int getX();
+	int getY();
+private:
+	int m_iX;
+	int m_iY;
+};
+
+//类外定义方法
+Coordinate::Coordinate(int x, int y)
+{
+	m_iX = x;
+	m_iY = y;
+	cout &lt;&lt; &quot;Coordinate()    &quot; &lt;&lt; m_iX &lt;&lt; &quot;,&quot; &lt;&lt; m_iY &lt;&lt; endl;
+}
+
+Coordinate::~Coordinate()
+{
+	cout &lt;&lt; &quot;~Coordinate()    &quot; &lt;&lt; m_iX &lt;&lt; &quot;,&quot; &lt;&lt; m_iY &lt;&lt; endl;
+}
+
+int Coordinate::getX()
+{
+	return m_iX;
+}
+
+int Coordinate::getY()
+{
+	return m_iY;
+}
+
+int main()
+{
+	/*
+	Coordinate* p = new Coordinate(1, 2); //从堆中实例化对象
+	cout &lt;&lt; p-&gt;getX() &lt;&lt; endl;
+	cout &lt;&lt; p-&gt;getY() &lt;&lt; endl;
+	delete p;
+	p = NULL;
+	*/
+
+	Coordinate coord(1, 2);//从栈中实例化对象
+	cout &lt;&lt; coord.getX() &lt;&lt; endl;
+	cout &lt;&lt; coord.getY() &lt;&lt; endl;
+}
+</code></pre>
+<h3 id="12-对象指针vs对象成员vs对象成员指针">1.2 对象指针vs对象成员vs对象成员指针</h3>
+<ul>
+<li>对象指针：有一个指针，其指向一个对象，典型例子就是在堆中实例化对象就是利用的对象指针。</li>
+<li>对象成员：作为一个对象来说，它成为了另外一个类的数据成员<br>
+举例说明：<br>
+1.Coordinate.cpp定义</li>
+</ul>
+<pre><code>#include&lt;iostream&gt;
+#include&quot;Coordinate.h&quot;
+using namespace std;
+
+class Coordinate
+{
+public:
+   Coordinate(int x, int y);
+   ~Coordinate();
+   int getX();
+   int getY();
+private:
+   int m_iX;
+   int m_iY;
+};
+
+Coordinate::Coordinate(int x, int y)
+{
+   m_iX = x;
+   m_iY = y;
+   cout &lt;&lt; &quot;Coordinate()    &quot; &lt;&lt; m_iX &lt;&lt; &quot;,&quot; &lt;&lt; m_iY &lt;&lt; endl;
+}
+
+Coordinate::~Coordinate()
+{
+   cout &lt;&lt; &quot;~Coordinate()    &quot; &lt;&lt; m_iX &lt;&lt; &quot;,&quot; &lt;&lt; m_iY &lt;&lt; endl;
+}
+
+int Coordinate::getX()
+{
+   return m_iX;
+}
+</code></pre>
+<p>2.Line.cpp定义</p>
+<pre><code>#include&lt;iostream&gt;
+#include&quot;Line.h&quot;
+using namespace std;
+
+class Line
+{
+public:
+	Line(int x1, int y1, int x2, int y2);
+	~Line();
+
+	void printInfo();
+private:
+	Coordinate m_pCoorA;
+	Coordinate m_pCoorB;
+};
+
+Line::Line(int x1, int y1, int x2, int y2) :m_pCoorA(Coordinate(x1, y1)),m_pCoorB(Coordinate(x2, y2)) //这里构造函数初始化务必使用初始化列表
+{
+	cout &lt;&lt; &quot;Line()&quot; &lt;&lt; endl;
+};
+
+Line::~Line()
+{
+
+	//delete m_pCoorA;
+	//m_pCoorA = NULL;
+
+	//delete m_pCoorB;
+	//m_pCoorB = NULL;
+	
+	cout &lt;&lt; &quot;~Line()&quot; &lt;&lt; endl;
+}
+
+void Line::printInfo()
+{
+	cout &lt;&lt; &quot;printInfo&quot; &lt;&lt; endl;
+	//cout &lt;&lt; &quot;(&quot; &lt;&lt; m_pCoorA-&gt;getX() &lt;&lt; &quot;,&quot; &lt;&lt; m_pCoorA-&gt;getY() &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+	//cout &lt;&lt; &quot;(&quot; &lt;&lt; m_pCoorB-&gt;getX() &lt;&lt; &quot;,&quot; &lt;&lt; m_pCoorB-&gt;getY() &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+
+	cout &lt;&lt; &quot;(&quot; &lt;&lt; m_pCoorA.getX() &lt;&lt; &quot;,&quot; &lt;&lt; m_pCoorA.getY() &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+	cout &lt;&lt; &quot;(&quot; &lt;&lt; m_pCoorB.getX() &lt;&lt; &quot;,&quot; &lt;&lt; m_pCoorB.getY() &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+}
+</code></pre>
+<p>3.demo.cpp定义</p>
+<pre><code>#include&lt;iostream&gt;
+#include&quot;Line.h&quot;
+using namespace std;
+
+int main()
+{
+	Line* p = new Line(1, 2, 3, 4);//利用对象指针实例化(从堆中开辟空间)
+	delete p;
+	p = NULL;
+}
+</code></pre>
+<ul>
+<li>对象指针：对象的指针成为了另外一个类的数据成员<br>
+Line.cpp定义需要更改</li>
+</ul>
+<pre><code>#include&lt;iostream&gt;
+#include&quot;Line.h&quot;
+using namespace std;
+
+class Line
+{
+public:
+	Line(int x1, int y1, int x2, int y2);
+	~Line();
+
+	void printInfo();
+private:
+	Coordinate *m_pCoorA;
+	Coordinate *m_pCoorB;
+};
+
+Line::Line(int x1, int y1, int x2, int y2)
+{
+	*m_pCoorA = Coordinate(x1, y1);
+	*m_pCoorB = Coordinate(x2, y2);
+	cout &lt;&lt; &quot;Line()&quot; &lt;&lt; endl;
+};
+
+Line::~Line()
+{
+
+	delete m_pCoorA;
+	m_pCoorA = NULL;
+
+	delete m_pCoorB;
+	m_pCoorB = NULL;
+	
+	cout &lt;&lt; &quot;~Line()&quot; &lt;&lt; endl;
+}
+
+void Line::printInfo()
+{
+	cout &lt;&lt; &quot;printInfo&quot; &lt;&lt; endl;
+	cout &lt;&lt; &quot;(&quot; &lt;&lt; m_pCoorA-&gt;getX() &lt;&lt; &quot;,&quot; &lt;&lt; m_pCoorA-&gt;getY() &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+	cout &lt;&lt; &quot;(&quot; &lt;&lt; m_pCoorB-&gt;getX() &lt;&lt; &quot;,&quot; &lt;&lt; m_pCoorB-&gt;getY() &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+
+
+}
+</code></pre>
+<h3 id="13总结">1.3总结</h3>
+<p>作为对象成员和对象成员指针还有另外一个很大的不同。<br>
+作为对象成员来说，如果我们使用sizeof这个对象的话，它就应该是里面所有对象的体积的总和。<br>
+而对象成员指针则不同，我们来看一看刚刚对象成员指针我们定义的时候是如何定义的。我们可以看到，我们定义的时候呢，是写了两个指针作为它的对象成员。而我们知道，一个指针在32位的编译器下面，它只占4个基本内存单元，那么两个指针呢，则占8个基本内存单元，而我们前面所讲到的Coordinate类呢，它有两个数据成员，这两个数据成员都是int型的，所以呢，每一个数据成员都应该占4个基本的内存单元。那么这样算下来呢，我们来想一想，如果我们使用sizeof来判断一个line这样的对象，到底有多大呢？如果在line这个对象中定义的是对象成员（即两个Coordinate），那么这两个Coordinate每一个就应该都占8个基本内存单元，那么两个呢，就应该占16个基本内存单元，打印出来就应该是<strong>16</strong>，但是现在呢，line对象中是两个对象成员指针，那么每一个对象成员指针应该只占4个基本内存单元，所以sizeof(line)计算出来就应该是<strong>8</strong>，加起来是这两个指针的大小的总和。</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://currydai.com/tag/program/" class="tag">
+                    Program
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://currydai.com/post/zhuan-zai-suan-fa-gong-cheng-shi-xue-xi-lu-xian/">
+                  <h3 class="post-title">
+                    【转载】[1]算法工程师学习路线
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'e9e2094cbb62d2e4fdf8',
+        clientSecret: 'e5f1fea8e3bc04931ca74fe4afd2051bc907e2b0',
+        repo: 'blog-comments',
+        owner: 'currydai',
+        admin: ['currydai'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
