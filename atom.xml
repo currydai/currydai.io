@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://currydai.com</id>
     <title>Currydai</title>
-    <updated>2021-04-19T15:24:25.935Z</updated>
+    <updated>2021-04-27T16:08:47.589Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://currydai.com"/>
     <link rel="self" href="https://currydai.com/atom.xml"/>
@@ -16,8 +16,8 @@
         <link href="https://currydai.com/post/ji-qi-xue-xi-ji-qi-xue-xi-yu-shen-du-xue-xi-gao-ji-xun-lian-ying/">
         </link>
         <updated>2021-04-19T14:15:25.000Z</updated>
-        <content type="html"><![CDATA[<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>−</mo><mo>−</mo><mo>−</mo><mo>−</mo><mi mathvariant="normal">目</mi><mi mathvariant="normal">录</mi><mo>−</mo><mo>−</mo><mo>−</mo><mo>−</mo><mo>−</mo><mo>−</mo><mo>−</mo><mo>−</mo><mo>−</mo></mrow><annotation encoding="application/x-tex">----目录---------
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord cjk_fallback">目</span><span class="mord cjk_fallback">录</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mord">−</span></span></span></span></span></p>
+        <content type="html"><![CDATA[<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi><mi>e</mi><mi>g</mi><mi>i</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">begin
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">b</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span></span></span></span></span></p>
 <h2 id="1-python基础">1. Python基础</h2>
 <h2 id="2-多元回归和逻辑回归">2. 多元回归和逻辑回归</h2>
 <h2 id="3-决策树和随机森林">3. 决策树和随机森林</h2>
@@ -32,265 +32,36 @@
 <h2 id="12nlp">12.NLP</h2>
 <h2 id="13生成对抗网络gan">13.生成对抗网络GAN</h2>
 <h2 id="14强化学习">14.强化学习</h2>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>−</mo><mo>−</mo><mo>−</mo><mo>−</mo><mo>−</mo><mo>−</mo><mo>−</mo><mo>−</mo><mo>−</mo><mo>−</mo><mo>−</mo><mo>−</mo><mo>−</mo><mo>−</mo><mo>−</mo></mrow><annotation encoding="application/x-tex">---------------
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">−</span></span></span></span></span></p>
+<p><strong>课程地址：https://www.bilibili.com/video/BV1Ei4y1u7No?p=1</strong></p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>e</mi><mi>n</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">end
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord mathdefault">d</span></span></span></span></span></p>
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[【LeetCode】链表刷题集合]]></title>
-        <id>https://currydai.com/post/leetcode-lian-biao-shua-ti-ji-he/</id>
-        <link href="https://currydai.com/post/leetcode-lian-biao-shua-ti-ji-he/">
-        </link>
-        <updated>2021-04-11T15:49:44.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="时间2021412~2021416">时间：2021.4.12~2021.4.16</h2>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[【编程】数据结构与算法（基础版）]]></title>
+        <title type="html"><![CDATA[【编程】数据结构与算法(极客大学)]]></title>
         <id>https://currydai.com/post/bian-cheng-shu-ju-jie-gou-yu-suan-fa-ji-chu-ban/</id>
         <link href="https://currydai.com/post/bian-cheng-shu-ju-jie-gou-yu-suan-fa-ji-chu-ban/">
         </link>
         <updated>2021-03-21T14:10:04.000Z</updated>
-        <content type="html"><![CDATA[<p><strong>四字真言：增删改查</strong></p>
-<h2 id="1线性表">1.线性表</h2>
-<ul>
-<li>定义：n个具有相同类型的数据元素的有限序列</li>
-<li>逻辑特征：个数的有限性、类型的相通性，类型的抽象性、序偶关系</li>
-</ul>
-<h3 id="11顺序表">1.1顺序表</h3>
-<ul>
-<li>定义：线性表的顺序存储结构</li>
-<li>要点：用一段连续地址，依次存储线性表中的数据元素</li>
-</ul>
-<pre><code>#pragma once
-#include &lt;iostream&gt;
-using namespace std;
-
-const int MaxSize = 100;
-
-template&lt;class T&gt;
-
-class SeqList
-{
-public:
-	SeqList();
-	SeqList(T a[], int n);
-	//~SeqList();
-
-	//增
-	T Insert(int i, T x);
-
-	//删
-	T Delete(int i);
-
-	//改
-	//好像不能直接修改
-
-	//查
-	int Empty();
-	int GetLength();
-	T Get(int i);
-	int GetIndex(T x);
-
-	//打印
-	void Print();
-
-private:
-	int length;
-	T data[MaxSize];
-};
-
-//类外实现
-
-//初始化。建立一个空表
-template&lt;class T&gt;
-SeqList&lt;T&gt;::SeqList()
-{
-	length = 0;
-}
-
-//构造函数，建立表
-template&lt;class T&gt;
-SeqList&lt;T&gt;::SeqList(T a[], int n)
-{
-	if (n &gt; MaxSize)
-	{
-		throw &quot;参数非法&quot;;
-	}
-
-	for (int i = 0; i &lt; n; i++)
-	{
-		data[i] = a[i];
-	}
-
-	length = n;
-}
-
-
-//////////增
-template&lt;class T&gt;
-T SeqList&lt;T&gt;::Insert(int i, T x)
-{
-	if (length == MaxSize)
-	{
-		throw &quot;上溢,无法再插入！&quot;;
-	}
-
-	if (i&lt;1 || i&gt;length)
-	{
-		throw &quot;插入位置错误！&quot;;
-	}
-
-	//i后面多有元素后移
-	for (int j = length; j &gt;= i; j--)
-	{
-		data[j] = data[j - 1];
-	}
-
-	//把x的值放在i-1处
-	data[i - 1]=x; 
-
-	//数组长度+1
-	length++;
-}
-
-///////删
-template&lt;class T&gt;
-T SeqList&lt;T&gt;::Delete(int i)
-{
-	if (i&lt;0 || i&gt;length)
-	{
-		throw &quot;删除位置错误！&quot;;
-	}
-
-	for (int j = i; j &lt; length; j++)
-	{
-		data[j-1] = data[j];
-	}
-
-	length--;
-}
-
-//////查
-template&lt;class T&gt;
-int SeqList&lt;T&gt;::Empty()
-{
-	if (length == 0)
-	{
-		return 1;
-	}
-
-	else
-	{
-		return 0;
-	}
-}
-
-template&lt;class T&gt;
-int SeqList&lt;T&gt;::GetLength()
-{
-	return length;
-}
-
-template&lt;class T&gt;
-T SeqList&lt;T&gt;::Get(int i)
-{
-	if (i&lt;0 || i&gt;length)
-	{
-		throw &quot;查询位置非法！&quot;;
-	}
-	else
-	{
-		return data[i];
-	}
-}
-
-template&lt;class T&gt;
-int SeqList&lt;T&gt;::GetIndex(T x)
-{
-	int flag = 0;
-	int index;
-	for (int j = 0; j &lt; length; j++)
-	{
-		if (x == data[j])
-		{
-			index=j;
-			flag++;
-			break;
-		}
-	}
-
-	if (flag &gt; 0)
-	{
-		return index;
-	}
-
-	else
-	{
-		throw &quot;无法查到到此元素！&quot;;
-	}
-
-}
-
-template&lt;class T&gt;
-void SeqList&lt;T&gt;::Print()
-{
-	for (int j = 0; j &lt; length; j++)
-	{
-		cout &lt;&lt; data[j];
-	}
-}
-
-
-
+        <content type="html"><![CDATA[<h2 id="前期准备">前期准备</h2>
+<h3 id="1-刷题技巧">1. 刷题技巧</h3>
+<pre><code>1. 看会or不会
+2. 学多种题解(国际版前三回答)
+3. 当天理解会写
+4. 隔一天独立重复-
+5. 隔一周独立重复
 </code></pre>
-<pre><code>#include&lt;iostream&gt;
-using namespace std;
-#include &quot;SeqList.h&quot;
-
-int main()
-{
-	int c[5] = {1,2,3,4,5};
-	SeqList&lt;int&gt; arr1(c, 5);
-
-	arr1.Insert(2, 0);
-	arr1.Print();
-	cout &lt;&lt; &quot;----------------&quot; &lt;&lt; endl;
-
-	arr1.Delete(2);
-	arr1.Print();
-	cout &lt;&lt; &quot;----------------&quot; &lt;&lt; endl;
-
-	int ans=arr1.Get(2);
-	cout &lt;&lt; ans &lt;&lt; endl;
-	cout &lt;&lt; &quot;----------------&quot; &lt;&lt; endl;
-
-	int ans2=arr1.GetIndex(2);
-	cout &lt;&lt; ans2 &lt;&lt; endl;
-	cout &lt;&lt; &quot;----------------&quot; &lt;&lt; endl;
-
-
-	return 0;
-}
+<h3 id="2-代码规范">2. 代码规范</h3>
+<pre><code>1. 谷歌code style
+    - C++/python：https://zh-google-styleguide.readthedocs.io/en/latest/contents/
+2. 指法和小技巧(top tips)
+3. 自顶向下的编程方式
+    - https://www.markhneedham.com/blog/2008/09/15/clean-code-book-review/
+4. vscode风格配置
+    - https://juejin.cn/post/6844903846871842823
+5. vscode与leetcode配置
+    - leetcode插件安装：leetcode
 </code></pre>
-<h3 id="12-单链表">1.2 单链表</h3>
-<ul>
-<li>顺序表-&gt;静态存储分配-&gt;事先确定容量</li>
-<li>单链表-&gt;动态存储分配-&gt;运行时分配空间</li>
-<li>单链表：线性表的链式存储结构</li>
-<li>思想：用一组任意的存储单元存放线性表</li>
-<li>特性：逻辑次序和物理次序不一定相同，元素之间的逻辑关系用指针表示</li>
-<li>节点结构：data-&gt;数据域    next指针域</li>
-<li>特殊性：头指针-&gt;指向第一个节点的存储地址，尾标志-&gt;终端节点的指针域为空  头结点-&gt;在第一个元素节点之前附设一个类型相同的结点<br>
-<img src="https://currydai.com/post-images/1618154683897.png" alt="" loading="lazy"></li>
-<li>头指针：一个指向第一个节点地址的指针变量</li>
-<li>头指针具有标识单链表的作用，所以经常用头指针代表单链表的名字</li>
-<li>头结点：在单链表的第一个结点之前附设一个结点，它没有直接前驱，称之为头结点</li>
-<li>可不存信息，也可以作为监视哨，或用于存放线性表的长度等附加信息</li>
-<li>指针域中存放首元结点的地址</li>
-<li>首元结点：存储第一个元素的节点<br>
--链表如果为空的情况下，如果单链表没有头结点，那么头指针就会指向NULL，如果加上头结点，无论单链表是否为空，头指针都会指向头结点，这样使得空链表与非空链表处理一致。并且使首元结点前插入或删除元素的时候，与后面操作相同，不需要产生额外的判断分支，使得算法更加简单。</li>
-</ul>
 ]]></content>
     </entry>
     <entry>
@@ -757,144 +528,6 @@ int main(int argc,char *argv[])
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[【编程】搞清C++中四大法王]]></title>
-        <id>https://currydai.com/post/bian-cheng-gao-qing-czhong-si-da-fa-wang/</id>
-        <link href="https://currydai.com/post/bian-cheng-gao-qing-czhong-si-da-fa-wang/">
-        </link>
-        <updated>2021-03-09T14:53:49.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="1封装">1.封装</h2>
-<h2 id="2继承">2.继承</h2>
-<h2 id="3多态">3.多态</h2>
-<h2 id="4模板和容器">4.模板和容器</h2>
-<p>C++除了面向对象的编程思想以外，还有一个最重要的就是模板技术。<br>
-C++提供两种模板机制：函数模板以及类模板</p>
-<h3 id="41函数模板">4.1函数模板</h3>
-<p>作用：建立一个通用函数，其函数返回值类型和形参类型可以不具体制定，用一个虚拟的类型来代表。<br>
-声明：<br>
-template&lt;class/typename T&gt;<br>
-template --- 声明创建模板<br>
-typename --- 表面其后面的符号是一种数据类型，可以用class代替<br>
-T --- 通用的数据类型，名称可以替换，通常为大写字母</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[【编程】数据结构与算法进阶（提升版）]]></title>
-        <id>https://currydai.com/post/bian-cheng-shu-ju-jie-gou-yu-suan-fa-jin-jie/</id>
-        <link href="https://currydai.com/post/bian-cheng-shu-ju-jie-gou-yu-suan-fa-jin-jie/">
-        </link>
-        <updated>2021-03-08T13:37:45.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="开篇题记">开篇题记</h2>
-<p>首先送自己一句名言自勉：</p>
-<p><strong>路漫漫其修远兮，吾将上下而求索</strong></p>
-<p>为什么我要这么说呢？</p>
-<p>这边篇文章需要耗费大量的时间与经历</p>
-<p>融合之前前所未有的数据结构与算法</p>
-<p>攻克 20 个最常用的、最基础数据结构与算法</p>
-<p>10个数据结构包括：</p>
-<ul>
-<li>数组</li>
-<li>链表</li>
-<li>栈</li>
-<li>队列</li>
-<li>散列表</li>
-<li>二叉树</li>
-<li>堆</li>
-<li>跳表</li>
-<li>图</li>
-<li>Trie树</li>
-</ul>
-<p>10个算法包括：</p>
-<ul>
-<li>递归</li>
-<li>排序</li>
-<li>二分查找</li>
-<li>搜索</li>
-<li>哈希算法</li>
-<li>贪心算法</li>
-<li>分治算法</li>
-<li>回溯算法</li>
-<li>动态规划</li>
-<li>字符串匹配算法</li>
-</ul>
-<figure data-type="image" tabindex="1"><img src="https://currydai.com/post-images/1615211197412.jpg" alt="" loading="lazy"></figure>
-<h2 id="0复杂度分析">0.复杂度分析</h2>
-<p>数据结构与算法解决的是：代码运行得更快+代码更省储存空间<br>
-考察标准：时间复杂度+空间复杂度</p>
-<h3 id="01-时间复杂度大o复杂度表示法">0.1 时间复杂度：大O复杂度表示法</h3>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">T(n)=O(f(n))
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span></span></p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">T(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>代码执行的总时间，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>表示数据规模，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">f(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>表示每行代码执行的总次数。<br>
-大O表示代码执行时间随数据规模增长的变化趋势，也叫渐进时间复杂度/时间复杂度。<br>
-计算规则：</p>
-<ul>
-<li>只关注循环执行次数最多的一段代码：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^2+2)=O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></li>
-<li>假发法则：总复杂度等于量级最大的那段代码的复杂度</li>
-<li>乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积<br>
-常见集中时间复杂度：多项式两级+非多项式量级</li>
-<li>常量阶：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></li>
-<li>指数阶:<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mn>2</mn><mi>n</mi></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(2^n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></li>
-<li>对数阶:<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(logn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></li>
-<li>阶乘阶:<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>!</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n!)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">!</span><span class="mclose">)</span></span></span></span></li>
-<li>线性阶:<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></li>
-<li>线性对数阶:<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></li>
-<li>平方阶:<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></li>
-<li>立方阶:<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>3</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></li>
-<li>k次方阶:<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mi>k</mi></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^k)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.099108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span><br>
-<img src="https://currydai.com/post-images/1615212650800.png" alt="" loading="lazy"></li>
-</ul>
-<h3 id="02-空间复杂度">0.2 空间复杂度</h3>
-<p>表示算法的储存空间与数据规模之间的增长关系。<br>
-平时比较常用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>,其他用的不多</p>
-<h3 id="03-多种多样的时间复杂度">0.3 多种多样的时间复杂度</h3>
-<ul>
-<li>最好情况时间复杂度</li>
-<li>最坏情况时间复杂度</li>
-<li>平均情况时间复杂度</li>
-<li>均摊时间复杂度</li>
-</ul>
-<h2 id="1-数组">1. 数组</h2>
-<p><strong>定义：数组是一种线性表数据结构，用一组连续的内存空间来存储一组具有相同类型的数据。</strong><br>
-标志：线性表+连续的内存空间+相容类型的数据<br>
-特点：低效的插入和删除<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">(O(n))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span></p>
-<p><strong>C++实现++</strong></p>
-<p><strong>小剧场</strong></p>
-<ol>
-<li>那么什么是线性表？<br>
-线性表中的数据排成一条直线，最多有前后两个方向，包括：数组/链表/队列/栈。</li>
-<li>那么什么是非线性表？<br>
-非线性表中数据之间并不是简单的前后关系，包括：二叉树、堆、图等。<br>
-<img src="https://currydai.com/post-images/1615213580789.png" alt="" loading="lazy"><br>
-<img src="https://currydai.com/post-images/1615213686192.png" alt="" loading="lazy"></li>
-<li>容器是否能够代替数组？<br>
-容器将数组操作的细节封装了起来，支持动态扩容</li>
-</ol>
-<h2 id="2-链表">2. 链表</h2>
-<p>链表恰恰相反，它并不需要一块连续的内存空间，它通过“指针”将一组零散的内存块串联起来使用<br>
-我们把内存块称为链表的“结点”，记录下个结点地址的指针叫作后继指针 next。<br>
-有两个结点是比较特殊的，第一个结点叫作头结点，把最后一个结点叫作尾结点。<br>
-尾结点特殊的地方是：指针不是指向下一个结点，而是指向一个空地址 NULL，表示这是链表上最后一个结点。<br>
-最常见的链表结构，它们分别是：单链表、双向链表和循环链表。</p>
-<ol>
-<li>单链表<br>
-只有一个方向的列表<br>
-<img src="https://currydai.com/post-images/1615910333861.jpg" alt="" loading="lazy"><br>
-<img src="https://currydai.com/post-images/1615910340683.jpg" alt="" loading="lazy"></li>
-<li>双向列表<br>
-有两个方向的列表<br>
-<img src="https://currydai.com/post-images/1615910500782.jpg" alt="" loading="lazy"></li>
-<li>双向循环列表<br>
-两种链表整合在一起就是一个新的版本：双向循环链表。<br>
-<img src="https://currydai.com/post-images/1615910507362.jpg" alt="" loading="lazy"></li>
-</ol>
-<p><strong>C++实现</strong></p>
-<p><strong>小剧场</strong><br>
-链表 VS 数组性能大比拼：<br>
-<img src="https://currydai.com/post-images/1615910594579.jpg" alt="" loading="lazy"><br>
-数组简单易用，在实现上使用的是连续的内存空间，可以借助 CPU 的缓存机制，预读数组中的数据，所以访问效率更高。而链表在内存中并不是连续存储，所以对 CPU 缓存不友好，没办法有效预读。<br>
-数组的缺点是大小固定，一经声明就要占用整块连续内存空间。如果声明的数组过大，系统可能没有足够的连续内存空间分配给它，导致“内存不足（out of memory）”。如果声明的数组过小，则可能出现不够用的情况。这时只能再申请一个更大的内存空间，把原数组拷贝进去，非常费时。链表本身没有大小的限制，天然地支持动态扩容，我觉得这也是它与数组最大的区别。</p>
-]]></content>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[【编程】python难点整理]]></title>
         <id>https://currydai.com/post/bian-cheng-python-jin-jie-zhi-lu/</id>
         <link href="https://currydai.com/post/bian-cheng-python-jin-jie-zhi-lu/">
@@ -1102,47 +735,6 @@ print('主线程')
         </link>
         <updated>2021-03-06T16:30:06.000Z</updated>
         <content type="html"><![CDATA[<h3 id=""></h3>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[【编程】plotly+Dash学习之路]]></title>
-        <id>https://currydai.com/post/bian-cheng-plotlydash-xue-xi-zhi-lu/</id>
-        <link href="https://currydai.com/post/bian-cheng-plotlydash-xue-xi-zhi-lu/">
-        </link>
-        <updated>2021-03-06T03:43:18.000Z</updated>
-        <content type="html"><![CDATA[<h3 id="mark">mark</h3>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[【机器学习】经典CNN结构解析：AlexNet、VGG、NIN、GoogLeNet、ResNet etc.]]></title>
-        <id>https://currydai.com/post/ji-qi-xue-xi-jing-dian-cnn-jie-gou-jie-xi-alexnetvggningooglenetresnet-etc/</id>
-        <link href="https://currydai.com/post/ji-qi-xue-xi-jing-dian-cnn-jie-gou-jie-xi-alexnetvggningooglenetresnet-etc/">
-        </link>
-        <updated>2021-02-24T15:23:10.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="1走进cnn">1.走进CNN</h2>
-<h3 id="11cnn起源">1.1CNN起源</h3>
-<p>卷积神经网络（Convolutional Neural Networks, CNN）是一类包含卷积计算且具有深度结构的前馈神经网络。<br>
-第一个卷积神经网络是<strong>1987年</strong>由Alexander Waibel等提出的时间延迟网络（Time Delay Neural Network, TDNN）。<br>
-<strong>1988年</strong>，Wei Zhang提出了第一个二维卷积神经网络：平移不变人工神经网络（SIANN），并将其应用于检测医学影像 。<br>
-<strong>1989年</strong>Yann LeCun同样构建了应用于计算机视觉问题的卷积神经网络，即LeNet的最初版本。LeNet包含两个卷积层，2个全连接层，共计6万个学习参数，规模远超TDNN和SIANN，且在结构上与现代的卷积神经网络十分接近。LeCun (1989)  对权重进行随机初始化后使用了随机梯度下降（Stochastic Gradient Descent, SGD）进行学习，这一策略被其后的深度学习研究所保留。此外，LeCun (1989)在论述其网络结构时首次使用了“卷积”一词 ，“卷积神经网络”也因此得名。这一时期为各类图像处理问题设计的卷积神经网络停留在了研究阶段，应用端的推广较少 。<br>
-<strong>1998年</strong>Yann LeCun及其合作者构建了更加完备的卷积神经网络LeNet-5并在手写数字的识别问题中取得成功，在原有设计中加入了池化层对输入特征进行筛选，LeNet-5及其后产生的变体定义了现代卷积神经网络的基本结构，其构筑中交替出现的卷积层-池化层被认为能够提取输入<strong>图像的平移不变特征</strong>。<br>
-在<strong>2006年</strong>深度学习理论被提出后 ，卷积神经网络的表征学习能力得到了关注，并随着数值计算设备的更新得到发展。<br>
-<strong>2012年</strong>的AlexNet开始，得到GPU计算集群支持的复杂卷积神经网络多次成为ImageNet大规模视觉识别竞赛ILSVRC） 的优胜算法，包括2013年的ZFNet 、2014年的VGGNet、GoogLeNet 和2015年的ResNet。AlexNet 发表的 2012 年是具有里程碑意义的一年。在 2012 年之前，深度神经网络在机器学习领域几乎是一潭死水。但后来，Krizhevsky 和他在多伦多大学的同事们在一项备受瞩目的图像识别竞赛提交了参赛作品，并取得了比以往任何成绩都要精确得多的成果。几乎一夜之间，深度神经网络成为图像识别的主要技术。其他使用该技术的研究人员很快证明了图像识别精度的进一步飞跃。</p>
-<h3 id="12理解cnn">1.2理解CNN</h3>
-<p>卷积神经网络最初是服务于画面识别的，所以我们先来看看画面识别的实质是什么。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[【数学】统计学中常见检验方法]]></title>
-        <id>https://currydai.com/post/shu-xue-tong-ji-xue-zhong-chang-jian-jian-yan-fang-fa/</id>
-        <link href="https://currydai.com/post/shu-xue-tong-ji-xue-zhong-chang-jian-jian-yan-fang-fa/">
-        </link>
-        <updated>2021-02-23T07:29:22.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="1ks-检验kolmogorov-smirnov-test-检验数据是否符合某种分布">1.KS-检验（Kolmogorov-Smirnov test） -- 检验数据是否符合某种分布</h2>
-<pre><code>        u2 = data2.iloc[:,0].mean()  # 计算均值
-        std2 = data2.iloc[:,0].std()  # 计算标准差
-        p2=stats.kstest(data2.iloc[:,0], 'norm', (u2, std2))[1]##是否满足正态分布
-</code></pre>
 ]]></content>
     </entry>
     <entry>
